@@ -1,0 +1,38 @@
+title: 企业新闻
+extends@:
+  type: default
+  context: 'blueprints://pages'
+form:
+  fields:
+    tabs:
+      fields:
+        content:
+          title: 新闻内容
+          fields:
+            header.title:
+              label: 新闻标题
+            header.summary:
+              type: textarea
+              label: 新闻摘要
+            header.author_name:
+              type: text
+              label: 发布人
+              default: 屹鑫元
+            content:
+              label: 新闻正文
+            header.media_order:
+              label: 新闻配图
+            header.demo:
+              type: toggle
+              label: 仅作为本地演示
+              help: 演示记录保留在后台，但不会进入官网列表、首页推荐及导航。
+              default: 0
+              options:
+                1: 是
+                0: 否
+              validate:
+                type: bool
+        options:
+          title: 发布设置
+        advanced:
+          title: 页面设置

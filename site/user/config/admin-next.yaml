@@ -1,0 +1,14 @@
+ui:
+  branding:
+    mode: text
+    text: 屹鑫元
+    title: 屹鑫元内容管理
+    subtitle: 本地试用环境
+  defaults:
+    adminLanguage: zh-Hans
+    colorMode: light
+    pagesViewMode: tree
+    helpMode: inline
+  settings:
+    autoSaveEnabled: false
+    collabEnabled: false

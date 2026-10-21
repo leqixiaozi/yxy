@@ -1,0 +1,60 @@
+title: 资质证书
+extends@:
+  type: default
+  context: 'blueprints://pages'
+form:
+  fields:
+    tabs:
+      fields:
+        content:
+          title: 证书内容
+          fields:
+            header.title:
+              label: 资质名称
+            header.certificate_category:
+              type: select
+              label: 证书分类
+              default: government
+              options:
+                government: 企业资质
+                credit: 第三方信用评价
+            header.show_in_designs:
+              type: select
+              multiple: true
+              label: 展示方案
+              help: 留空表示全部方案；本次信用评价证书仅选择数字星图和数字脉冲。
+              options:
+                flow: 01 数据光流
+                constellation: 02 数字星图
+                studio: 03 品牌工作室
+                nexus: 04 数字脉冲
+            header.preview_image:
+              type: text
+              label: 列表预览图片文件名
+              help: 可选；留空时自动使用上传的首张证书图片。
+            header.original_image:
+              type: text
+              label: 原件图片文件名
+              help: 可选；详情页优先展示该原件，留空时使用首张图片。
+            header.issuer:
+              type: text
+              label: 颁发机构
+            header.valid_until:
+              type: text
+              label: 有效期至
+              placeholder: '例如 2028-06-30'
+            header.summary:
+              type: textarea
+              label: 简要说明
+            content:
+              label: 证书说明
+              help: 请填写经过确认的资质信息；右侧上传证书图片后，前台会自动显示首张图片。
+            header.media_order:
+              label: 证书图片与附件
+            header.certificate_number:
+              type: text
+              label: 证书编号
+        options:
+          title: 发布设置
+        advanced:
+          title: 页面设置

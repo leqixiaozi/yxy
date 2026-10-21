@@ -1,0 +1,12 @@
+YIXINYUAN theme assets
+
+Company logo and qualification media: supplied by the company. Original materials are preserved separately from the public website.
+Abstract hero backgrounds: generated with the built-in image generation tool using selected visual references; text and controls are native HTML.
+Tabler Icons v3.42.0: https://github.com/tabler/tabler-icons, MIT, see icons/LICENSE.
+Inter Latin font: bundled official Grav Quark2 theme, https://github.com/rsms/inter, SIL OFL 1.1, see fonts/LICENSE.txt.
+Noto Sans SC: https://github.com/google/fonts/tree/main/ofl/notosanssc, SIL OFL 1.1, see fonts/NotoSansSC-OFL.txt.
+Source Serif 4: https://github.com/google/fonts/tree/main/ofl/sourceserif4, SIL OFL 1.1, see fonts/SourceSerif4-OFL.txt.
+Google Fonts WOFF2 files are self-hosted unmodified. Original unicode ranges are retained for on-demand loading. Source URLs, sizes and SHA-256 hashes: fonts/SOURCES.json. No runtime Google Fonts requests.
+All explicitly named website text fonts are open source. Generic sans-serif/serif are emergency browser fallbacks if a font fails or lacks a glyph. This inventory concerns website fonts; it does not relicense company-supplied raster originals or the Grav administration interface.
+
+Digital pulse: generated static background; independent runtime light particles, pointer interaction, orbital movement and waves are Canvas 2D.

@@ -1,0 +1,9 @@
+<div class="certificate-gallery">
+  <div class="certificate-grid" aria-label="企业资质证书">
+    {% for certificate in government_certificates %}{% include 'partials/certificate-card.html.twig' %}{% endfor %}
+  </div>
+  {% if credit_certificates|length %}<details class="credit-certificates">
+    <summary><span>信用评价证书 <small>{{ credit_certificates|length }} 项</small></span><span class="credit-toggle" aria-hidden="true">+</span></summary>
+    <div class="certificate-grid credit-grid" aria-label="第三方信用评价证书">{% for certificate in credit_certificates %}{% include 'partials/certificate-card.html.twig' %}{% endfor %}</div>
+  </details>{% endif %}
+</div>

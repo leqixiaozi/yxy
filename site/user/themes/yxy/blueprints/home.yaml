@@ -1,0 +1,137 @@
+title: 企业首页
+extends@:
+  type: default
+  context: 'blueprints://pages'
+form:
+  fields:
+    tabs:
+      fields:
+        content:
+          title: 首页内容
+          fields:
+            header.title:
+              label: 页面标题
+            content:
+              label: 补充正文
+              help: 首页模块请在下方专用字段维护；补充正文不在首页显示。
+            header.flow_line1:
+              type: text
+              label: 数据光流：标题第一行
+            header.flow_line2:
+              type: text
+              label: 数据光流：标题第二行
+            header.flow_emphasis:
+              type: text
+              label: 数据光流：强调文字
+            header.constellation_line1:
+              type: text
+              label: 数字星图：标题第一行
+            header.constellation_line2:
+              type: text
+              label: 数字星图：标题第二行
+            header.constellation_emphasis:
+              type: text
+              label: 数字星图：强调文字
+            header.studio_line1:
+              type: text
+              label: 工作室：英文第一行
+            header.studio_emphasis:
+              type: text
+              label: 工作室：英文强调词
+            header.studio_line2:
+              type: text
+              label: 工作室：英文第二行余文
+            header.studio_subtitle:
+              type: text
+              label: 工作室：中文副标题
+            header.nexus_line1:
+              type: text
+              label: 数字脉冲：标题第一行
+            header.nexus_line2:
+              type: text
+              label: 数字脉冲：标题第二行
+            header.nexus_emphasis:
+              type: text
+              label: 数字脉冲：强调文字
+            header.intro:
+              type: text
+              label: 首页定位说明
+            header.cta_label:
+              type: text
+              label: 咨询按钮文字
+            header.active_services_label:
+              type: text
+              label: 方案02/04：技术服务栏目名称
+              help: 仅用于数字星图、数字脉冲；不影响方案01/03。
+            header.active_approach_label:
+              type: text
+              label: 方案02/04：合作流程栏目名称
+              help: 同步顶部导航与对应区块称呼；不影响方案01/03。
+            header.constellation_services_heading:
+              type: textarea
+              label: 数字星图：服务区标题
+            header.services_heading:
+              type: textarea
+              label: 服务区标题
+            header.services_intro:
+              type: textarea
+              label: 服务区介绍
+            header.approach_heading:
+              type: textarea
+              label: 工作方式标题
+            header.about_heading:
+              type: textarea
+              label: 企业介绍标题
+            header.about_intro:
+              type: textarea
+              label: 企业简介
+            header.founded:
+              type: text
+              label: 成立年月
+            header.contact_heading:
+              type: text
+              label: 联系区标题
+            header.contact_intro:
+              type: text
+              label: 联系区说明
+            header.address:
+              type: textarea
+              label: 办公地址
+            header.phone:
+              type: text
+              label: 联系电话
+            header.email:
+              type: text
+              label: 对外邮箱
+            header.contact_note:
+              type: text
+              label: 未配置联系方式时的说明
+            header.services:
+              type: list
+              label: 服务内容
+              help: 请按真实业务范围维护，勿将设计示意写成既有交付成果。
+              fields:
+                .title:
+                  type: text
+                  label: 名称
+                .description:
+                  type: textarea
+                  label: 详细说明
+                .summary:
+                  type: textarea
+                  label: 简要说明
+            header.approach_steps:
+              type: list
+              label: 工作方式步骤
+              help: 请按真实业务范围维护，勿将设计示意写成既有交付成果。
+              fields:
+                .title:
+                  type: text
+                  label: 名称
+                .description:
+                  type: textarea
+                  label: 详细说明
+        options:
+          title: 发布设置
+        advanced:
+          title: 页面设置

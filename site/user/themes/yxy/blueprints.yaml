@@ -1,0 +1,66 @@
+name: 屹鑫元企业官网
+slug: yxy
+type: theme
+version: 0.3.0
+description: 数据光流、交互星图、品牌工作室与数字脉冲四套轻量视觉模板
+license: MIT
+compatibility:
+  grav: ['2.1']
+dependencies:
+  - { name: grav, version: '>=2.1.0' }
+author:
+  name: 屹鑫元
+form:
+  validation: loose
+  fields:
+    default_design:
+      type: select
+      label: 默认官网方案
+      default: flow
+      options:
+        flow: 01 数据光流（深色科技）
+        constellation: 02 数字星图（浅色科技）
+        studio: 03 品牌工作室（国际化留白）
+        nexus: 04 数字脉冲（交互能量轨道）
+    motion_enabled:
+      type: toggle
+      label: 开启轻量动效
+      default: 1
+      options:
+        1: 开启
+        0: 关闭
+      validate:
+        type: bool
+    preview_switcher:
+      type: toggle
+      label: 显示方案预览切换器
+      help: 选定正式方案后关闭；不影响后台默认方案选择。
+      default: 1
+      options:
+        1: 显示
+        0: 隐藏
+      validate:
+        type: bool
+    footer_section:
+      type: section
+      title: 页脚与备案（仅方案02/04）
+      underline: true
+      text: 未填写编号时显示两个官方查询入口；填入真实备案号后自动替换链接文字。
+    footer_icp_number:
+      type: text
+      label: ICP备案号
+      help: 填写备案平台核发的完整编号。
+    footer_icp_url:
+      type: text
+      label: ICP备案查询链接
+      default: 'https://beian.miit.gov.cn/'
+      help: 默认跳转工信部备案查询站点，可替换为对应的HTTPS查询地址。
+    footer_psb_number:
+      type: text
+      label: 公安备案号
+      help: 填写公安备案平台核发的完整编号。
+    footer_psb_url:
+      type: text
+      label: 公安备案查询链接
+      default: 'https://beian.mps.gov.cn/#/query/webSearch'
+      help: 默认跳转公安备案查询；取得具体查询链接后可直接替换。

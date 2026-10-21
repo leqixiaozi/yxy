@@ -1,0 +1,40 @@
+{% set designs = {'flow': '01 数据光流', 'constellation': '02 数字星图', 'studio': '03 品牌工作室', 'nexus': '04 数字脉冲'} %}
+{% set requested = uri.query('design') %}
+{% set configured = config.themes.yxy.default_design|default('flow') %}
+{% set design = requested in designs|keys ? requested : (configured in designs|keys ? configured : 'flow') %}
+{% set design_query = '?design=' ~ design %}
+{% set home_url = base_url_relative ~ '/' ~ design_query %}
+{% set home = pages.find('/home') %}
+{% set focused_design = design in ['constellation','nexus'] %}
+{% set services_label = focused_design ? home.header.active_services_label|default('技术服务') : '服务能力' %}
+{% set approach_label = focused_design ? home.header.active_approach_label|default('合作流程') : '工作方式' %}
+{% set section_home = page.template == 'home' and focused_design %}
+{% set section_base = section_home ? '' : home_url %}
+{% set official_news = [] %}{% set official_cases = [] %}
+{% set government_certificates = [] %}{% set credit_certificates = [] %}
+{% for certificate in pages.find('/qualifications').children.published.routable.order('folder','asc') %}{% if not certificate.header.demo and (not certificate.header.show_in_designs or design in certificate.header.show_in_designs) %}{% if certificate.header.certificate_category == 'credit' %}{% set credit_certificates = credit_certificates|merge([certificate]) %}{% else %}{% set government_certificates = government_certificates|merge([certificate]) %}{% endif %}{% endif %}{% endfor %}
+{% for item in pages.find('/news').children.published.routable %}{% if not item.header.demo %}{% set official_news = official_news|merge([item]) %}{% endif %}{% endfor %}
+{% for item in pages.find('/cases').children.published.routable %}{% if not item.header.demo %}{% set official_cases = official_cases|merge([item]) %}{% endif %}{% endfor %}
+<!doctype html><html lang="zh-CN"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="{{ page.header.summary|default(home.header.intro)|e }}">
+<title>{{ page.home ? site.title|e : page.title|e ~ ' · ' ~ site.title|e }}</title>
+<link rel="icon" href="{{ url('theme://images/logo.webp') }}" type="image/webp">
+<link rel="stylesheet" href="{{ url('theme://css/fonts.css') }}?v=1">
+<link rel="stylesheet" href="{{ url('theme://css/site.css') }}?v=6">
+{% if design in ['constellation','studio','nexus'] %}<link rel="stylesheet" href="{{ url('theme://css/interactive.css') }}?v=4">{% endif %}
+<script defer src="{{ url('theme://js/site.js') }}?v=4"></script>
+{% if page.template == 'home' and design in ['constellation','studio','nexus'] %}<script defer src="{{ url('theme://js/interactive-hero.js') }}?v=5"></script>{% endif %}{% if design == 'constellation' %}<link rel="stylesheet" href="{{ url('theme://css/constellation.css') }}?v=2">{% endif %}{% if section_home %}<script defer src="{{ url('theme://js/section-nav.js') }}?v=2"></script>{% endif %}{% if focused_design %}<link rel="stylesheet" href="{{ url('theme://css/active-layout.css') }}?v=1"><link rel="stylesheet" href="{{ url('theme://css/certificates.css') }}?v=1"><link rel="stylesheet" href="{{ url('theme://css/footer.css') }}?v=1">{% endif %}{% if focused_design and page.template == 'home' %}<script src="{{ url('theme://js/home-entry.js') }}?v=1"></script><link rel="stylesheet" href="{{ url('theme://css/section-ambience.css') }}?v=1"><script defer src="{{ url('theme://js/section-ambience.js') }}?v=1"></script>{% endif %}</head>
+<body class="design-{{ design }} {{ page.template == 'home' ? 'is-home' : 'is-content' }}" data-motion="{{ config.themes.yxy.motion_enabled is same as(false) ? 'off' : 'on' }}">
+<a class="skip-link" href="#main">跳到正文</a>
+<header class="site-header wrap"><a class="brand" href="{{ section_home ? '#home' : home_url }}" aria-label="屹鑫元 首页"><img src="{{ url('theme://images/logo.webp') }}" alt="" width="62" height="44"><span>屹鑫元<small>YIXINYUAN</small></span></a>
+<button class="menu-toggle" type="button" aria-controls="main-nav" aria-expanded="false">菜单 <img src="{{ url('theme://icons/menu-2.svg') }}" alt="" width="22" height="22"></button>
+<nav id="main-nav" aria-label="主要导航">{% if focused_design %}<a href="{{ section_base }}#home">首页</a>{% endif %}<a href="{{ section_base }}#services">{{ services_label|e }}</a><a href="{{ section_base }}#approach">{{ approach_label|e }}</a><a href="{{ section_base }}#about">关于我们</a>
+{% if focused_design %}<a href="{{ section_base }}#qualifications">企业资质</a>{% endif %}
+{% if official_cases|length %}<a href="{{ focused_design ? section_base ~ '#cases' : base_url_relative ~ '/cases' ~ design_query }}">客户案例</a>{% endif %}
+{% if official_news|length %}<a href="{{ focused_design ? section_base ~ '#news' : base_url_relative ~ '/news' ~ design_query }}">新闻动态</a>{% endif %}
+<a class="button nav-cta" href="{{ section_base }}#contact">{{ focused_design ? '联系我们' : '开始对话' }} <img class="icon" src="{{ url('theme://icons/arrow-up-right.svg') }}" alt=""></a></nav></header>
+<main id="main">{% block content %}{% endblock %}</main>
+{% if focused_design %}{% include 'partials/company-footer.html.twig' %}{% else %}<footer class="site-footer wrap"><span>{{ site.title|e }}</span><div><a href="{{ base_url_relative }}/qualifications{{ design_query }}">企业资质</a><span>YIXINYUAN / SOFTWARE & TECHNOLOGY</span></div></footer>{% endif %}
+{% if config.themes.yxy.preview_switcher is not same as(false) %}<aside class="preview-tools" aria-label="模板预览工具"><details><summary>切换方案 · {{ design == 'flow' ? '01' : (design == 'constellation' ? '02' : (design == 'studio' ? '03' : '04')) }}</summary><div class="design-options">{% for key, label in designs %}<a href="{{ page.url }}?design={{ key }}" {% if design == key %}aria-current="true"{% endif %}>{{ label }}</a>{% endfor %}<button class="motion-toggle" type="button" aria-pressed="false">暂停动效</button></div></details></aside>{% endif %}
+</body></html>

@@ -1,0 +1,40 @@
+home:
+  alias: '/home'
+
+pages:
+  theme: yxy
+
+cache:
+  enabled: true
+  check:
+    method: file
+
+assets:
+  css_pipeline: false
+  js_pipeline: false
+  enable_asset_timestamp: false
+
+errors:
+  display: true
+  log: true
+
+debugger:
+  enabled: false
+  provider: clockwork
+
+gpm:
+  releases: stable
+  verify_peer: true
+
+updates:
+  safe_upgrade: true
+  safe_upgrade_snapshot_limit: 5
+
+languages:
+  supported: [zh-Hans]
+  default_lang: zh-Hans
+  include_default_lang: false
+  include_default_lang_file_extension: false
+
+timezone: Asia/Shanghai
+custom_base_url: 'http://127.0.0.1:8099'

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" fill="none">
+<defs><linearGradient id="energy" x1="210" y1="750" x2="1150" y2="130" gradientUnits="userSpaceOnUse"><stop stop-color="#317cff" stop-opacity=".1"/><stop offset=".55" stop-color="#62dfff"/><stop offset="1" stop-color="#a67aff" stop-opacity=".4"/></linearGradient></defs>
+<g stroke="url(#energy)"><path d="M230 800C300 650 1170 740 1050 440S900 80 1200 60" stroke-width="1.5"/><path d="M290 800C370 660 1220 720 1090 420S950 60 1200 20"/><path d="M350 800C430 680 1270 700 1130 400S1010 50 1200 0" stroke-dasharray="3 12"/><ellipse cx="900" cy="470" rx="270" ry="100" transform="rotate(-30 900 470)"/><ellipse cx="900" cy="470" rx="310" ry="130" transform="rotate(-30 900 470)" stroke-dasharray="2 14"/></g>
+<g fill="#6bddff"><circle cx="824" cy="615" r="3"/><circle cx="1056" cy="457" r="4"/><circle cx="1018" cy="250" r="3"/></g><circle cx="1060" cy="625" r="4" fill="#b38aff"/>
+</svg>

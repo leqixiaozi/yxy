@@ -1,0 +1,20 @@
+/* Only designs 02 and 04 load this footer. Reserved slots show query links until real registration numbers are supplied. */
+.company-footer{border-top:1px solid var(--line);color:var(--muted);background:var(--paper);font-size:13px}
+.design-constellation .company-footer{background:#f9fbff}
+.company-footer>.wrap{padding-top:34px;padding-bottom:30px}
+.footer-top{display:flex;align-items:center;justify-content:space-between;gap:26px;padding-bottom:25px;border-bottom:1px solid var(--line)}
+.footer-identity{display:flex;flex-direction:column;gap:9px;min-width:0}
+.footer-identity strong{font-size:16px;font-weight:600;color:var(--ink);line-height:1.6}
+.footer-identity>span{font-size:9px;letter-spacing:.18em;line-height:1.7}
+.footer-links{display:flex;align-items:center;flex-wrap:wrap;gap:26px;color:var(--ink);font-size:13px}
+.company-footer a{transition:color .2s;text-underline-offset:4px}
+.company-footer a:hover{color:var(--blue);text-decoration:underline}
+.footer-bottom{display:grid;grid-template-columns:minmax(200px,1fr) minmax(0,1.7fr);gap:24px;padding-top:20px;align-items:start;font-size:11px;line-height:1.9}
+.footer-copyright{overflow-wrap:anywhere}
+.footer-registrations{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 22px;text-align:right;min-height:22px}
+.registration-slot{display:block;min-height:22px;overflow-wrap:anywhere}
+.registration-slot a{display:inline-block;max-width:100%}
+/* The candidate switcher is a preview control; leave clearance while it is enabled. */
+body:has(.preview-tools) .company-footer>.wrap{padding-bottom:70px}
+@media(max-width:760px){.company-footer>.wrap{padding-top:28px;padding-bottom:28px}.footer-top{align-items:flex-start;flex-direction:column;gap:22px;padding-bottom:24px}.footer-identity strong{font-size:15px}.footer-identity>span{font-size:8px;letter-spacing:.15em}.footer-links{font-size:13px;gap:26px}.footer-bottom{grid-template-columns:1fr;gap:14px;font-size:11px;padding-top:18px}.footer-registrations{grid-template-columns:1fr;gap:6px;text-align:left;min-height:40px}.registration-slot{min-height:18px}body:has(.preview-tools) .company-footer>.wrap{padding-bottom:60px}}
+@media(prefers-reduced-motion:reduce){.company-footer a{transition:none}}

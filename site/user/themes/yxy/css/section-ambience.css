@@ -1,0 +1,28 @@
+/* Shared quiet orbital backgrounds for designs 02/04; no effect on other templates. */
+:is(.design-constellation,.design-nexus).is-home #main>section:not(#home){position:relative;isolation:isolate;--ambient-opacity:.46;--ambient-blue:#578ef015;--ambient-cyan:#3dd5f51c;--ambient-purple:#b27aea16}
+:is(.design-constellation,.design-nexus).is-home #main>section:not(#home)::before,
+:is(.design-constellation,.design-nexus).is-home #main>section:not(#home)::after{content:'';position:absolute;inset:28px 24px;pointer-events:none;z-index:-1;mask-image:linear-gradient(transparent,#000 12%,#000 85%,transparent);animation-play-state:paused}
+:is(.design-constellation,.design-nexus).is-home #main>section:not(#home)::before{background:url('../images/section-orbits.svg') center/cover no-repeat;opacity:var(--ambient-opacity);animation:ambient-orbit 28s ease-in-out infinite alternate paused}
+:is(.design-constellation,.design-nexus).is-home #main>section:not(#home)::after{background:radial-gradient(circle at 78% 24%,#64b6f68c 0 3px,transparent 4px),radial-gradient(circle at 88% 72%,#ae88eb80 0 4px,transparent 5px),radial-gradient(circle at 22% 78%,#6ecce96b 0 3px,transparent 4px),radial-gradient(ellipse at 87% 70%,var(--ambient-cyan),transparent 43%),radial-gradient(ellipse at 70% 28%,var(--ambient-purple),transparent 39%),radial-gradient(ellipse at 15% 80%,var(--ambient-blue),transparent 42%);animation:ambient-drift 17s ease-in-out infinite alternate paused}
+:is(.design-constellation,.design-nexus).is-home #main>section:not(#home).ambient-visible::before,
+:is(.design-constellation,.design-nexus).is-home #main>section:not(#home).ambient-visible::after{animation-play-state:running}
+:is(.design-constellation,.design-nexus).is-home #approach::before{background-position:25% center;transform:scaleX(-1)}
+:is(.design-constellation,.design-nexus).is-home #about::before{background-position:75% center;opacity:calc(var(--ambient-opacity) * .75)}
+:is(.design-constellation,.design-nexus).is-home #qualifications::before{opacity:calc(var(--ambient-opacity) * .6)}
+:is(.design-constellation,.design-nexus).is-home #contact .contact-art{display:none}
+.design-nexus.is-home #main>section:not(#home){--ambient-opacity:.32;--ambient-blue:#438aff10;--ambient-cyan:#3dd5f512;--ambient-purple:#b27aea10}
+:is(.design-constellation,.design-nexus).motion-paused #main>section::before,
+:is(.design-constellation,.design-nexus).motion-paused #main>section::after,
+:is(.design-constellation,.design-nexus).page-hidden #main>section::before,
+:is(.design-constellation,.design-nexus).page-hidden #main>section::after,
+:is(.design-constellation,.design-nexus)[data-motion="off"] #main>section::before,
+:is(.design-constellation,.design-nexus)[data-motion="off"] #main>section::after{animation-play-state:paused!important}
+@keyframes ambient-orbit{from{translate:-8px 6px}to{translate:8px -6px}}
+@keyframes ambient-drift{from{transform:translate(-12px,8px)}to{transform:translate(12px,-8px)}}
+@media(max-width:760px){:is(.design-constellation,.design-nexus).is-home #main>section:not(#home)::before,:is(.design-constellation,.design-nexus).is-home #main>section:not(#home)::after{inset:24px 16px}:is(.design-constellation,.design-nexus).is-home #main>section:not(#home)::before{background-size:auto 100%;opacity:calc(var(--ambient-opacity) * .65)}}
+@media(prefers-reduced-motion:reduce){:is(.design-constellation,.design-nexus).is-home #main>section::before,:is(.design-constellation,.design-nexus).is-home #main>section::after{animation:none!important}}
+
+/* Nexus keeps its own dark energy lanes instead of the constellation mesh. */
+.design-nexus.is-home #main>section:not(#home)::before{background-image:url('../images/section-energy.svg');opacity:.44;animation-duration:24s}
+.design-nexus.is-home #main>section:not(#home)::after{animation-duration:19s}
+@media(max-width:760px){.design-nexus.is-home #main>section:not(#home)::before{opacity:.3}}

@@ -1,0 +1,2 @@
+{% extends 'partials/article.html.twig' %}
+{% block facts %}<dl class="facts">{% if page.header.industry %}<div><dt>所属行业</dt><dd>{{ page.header.industry|e }}</dd></div>{% endif %}{% if page.header.service %}<div><dt>服务内容</dt><dd>{{ page.header.service|e }}</dd></div>{% endif %}</dl>{% endblock %}

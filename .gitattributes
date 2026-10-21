@@ -1,0 +1,2 @@
+# Preserve the upstream OFL license text, including its original trailing spaces.
+site/user/themes/yxy/fonts/*-OFL.txt whitespace=-blank-at-eol

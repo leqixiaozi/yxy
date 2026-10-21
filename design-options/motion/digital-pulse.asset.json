@@ -1,0 +1,11 @@
+{
+  "tool": "built-in image_gen",
+  "reference_role": "Company logo used only for blue/cyan/purple palette, not redrawn",
+  "reference": "site/user/themes/yxy/images/logo.webp",
+  "source": "design-options/motion/digital-pulse.png",
+  "web_asset": "site/user/themes/yxy/images/hero-nexus.webp",
+  "dimensions": [1536, 1024],
+  "webp_quality": 84,
+  "webp_bytes": 187178,
+  "prompt": "Use case: stylized-concept. Create one high quality raster WEBSITE HERO BACKGROUND ASSET, landscape 1536x1024. This is NOT a website screenshot: NO text, NO letters, NO numbers, NO logos, NO UI, NO frames. Reference image 1 is ONLY a color/brand mood reference, do not reproduce the logo. The website belongs to a Chinese B2B software engineering company, international, premium, extremely futuristic and cool but precise. Entire background almost black midnight ink (#030817). Leftmost 52 percent should remain very dark, uncluttered, low-contrast space so native editable large white headline can be overlaid. Main subject centered at 77% width, 50% height: an exquisitely detailed luminous cyan blue and violet energy nucleus, a hollow torus / quantum portal with a subtly glassy spherical inner core, oblique elliptical orbital rings, floating fine particle sparks. Powerful directional cyan and electric cobalt light trails spiral into the core from bottom right and behind, magenta-violet halo edge highlights, small luminous pinpoints. Cinematic high-end 3D rendered abstract technology, crisp thin filament detail, rich depth, bloom restrained enough to preserve line definition; looks more spectacular than a generic blue gradient. Core must be fully visible in right half with margin, not cropped off edges; energetic motion implied by curved light threads. Very restrained thin perspective grid on floor in bottom right only, clean and photographic/3D texture rather than flat diagram. No data HUD, no dashboards, no stock-photo human imagery. Keep contrast strongest in right half; left dark text area remains nearly black. Frame should compose well in a wide full-bleed website hero with object-fit cover and crop in mobile. Reference palette blue/cyan/purple from provided company logo only."
+}

@@ -1,0 +1,5 @@
+{% set cover = certificate.header.preview_image ? certificate.media[certificate.header.preview_image] : certificate.media.images|first %}
+<a class="certificate-tile" href="{{ certificate.url }}{{ design_query }}">
+  {% if cover %}<figure class="certificate-picture"><img src="{{ cover.url }}" alt="{{ certificate.title|e }}证书" width="{{ cover.width }}" height="{{ cover.height }}" loading="lazy" decoding="async"></figure>{% else %}<div class="certificate-picture certificate-missing">查看证书详情</div>{% endif %}
+  <div class="certificate-caption"><h3>{{ certificate.title|e }}</h3><span>查看原件 <img class="icon" src="{{ url('theme://icons/arrow-up-right.svg') }}" alt=""></span></div>
+</a>

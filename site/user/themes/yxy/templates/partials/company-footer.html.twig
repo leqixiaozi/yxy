@@ -1,0 +1,13 @@
+{% set icp_number = config.themes.yxy.footer_icp_number|default('')|trim %}
+{% set psb_number = config.themes.yxy.footer_psb_number|default('')|trim %}
+{% set icp_link = config.themes.yxy.footer_icp_url|default('https://beian.miit.gov.cn/')|trim %}
+{% set psb_link = config.themes.yxy.footer_psb_url|default('https://beian.mps.gov.cn/#/query/webSearch')|trim %}
+{% if not (icp_link starts with 'https://' or icp_link starts with 'http://') %}{% set icp_link = 'https://beian.miit.gov.cn/' %}{% endif %}
+{% if not (psb_link starts with 'https://' or psb_link starts with 'http://') %}{% set psb_link = 'https://beian.mps.gov.cn/#/query/webSearch' %}{% endif %}
+<footer class="company-footer"><div class="wrap">
+  <div class="footer-top"><div class="footer-identity"><strong>{{ site.title|e }}</strong><span>YIXINYUAN · SOFTWARE &amp; TECHNOLOGY</span></div><nav class="footer-links" aria-label="页脚导航"><a href="{{ section_base }}#about">关于我们</a><a href="{{ section_base }}#qualifications">企业资质</a><a href="{{ section_base }}#contact">联系我们</a></nav></div>
+  <div class="footer-bottom"><p class="footer-copyright">© {{ 'now'|date('Y') }} {{ site.title|e }}</p><nav class="footer-registrations" aria-label="备案查询">
+    <span class="registration-slot" data-registration="icp"><a href="{{ icp_link|e('html_attr') }}" target="_blank" rel="noopener noreferrer" aria-label="ICP备案查询{% if icp_number %}：{{ icp_number|e('html_attr') }}{% endif %}">{{ icp_number ? icp_number|e : 'ICP备案查询' }}</a></span>
+    <span class="registration-slot" data-registration="psb"><a href="{{ psb_link|e('html_attr') }}" target="_blank" rel="noopener noreferrer" aria-label="公安备案查询{% if psb_number %}：{{ psb_number|e('html_attr') }}{% endif %}">{{ psb_number ? psb_number|e : '公安备案查询' }}</a></span>
+  </nav></div>
+</div></footer>

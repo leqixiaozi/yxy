@@ -1,0 +1,17 @@
+/* Full-width section artwork, with text aligned to the same 1640px content measure. */
+:is(.design-constellation,.design-nexus).is-home #main>section.wrap{max-width:none;padding-inline:max(var(--pad),calc((100% - 1640px)/2 + var(--pad)))}
+/* Match design 02's navigation structure while preserving Nexus colors. */
+.design-nexus{--header-height:88px}
+.design-nexus .site-header{height:var(--header-height);max-width:none;border-bottom:1px solid #54719d50;backdrop-filter:blur(14px)}
+.design-nexus.is-home .site-header{position:fixed;top:0;left:0;transform:none;z-index:12;background:#030b1ded}
+.design-nexus #main-nav{gap:clamp(14px,2.2vw,34px);font-size:14px}
+.design-nexus #main-nav .nav-cta{margin-left:0;min-height:42px;padding:9px 16px}
+.design-nexus #main-nav a[aria-current="location"]{color:var(--blue)}
+.design-nexus #main-nav>a:not(.button)::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--blue);transform:scaleX(0);transition:transform .2s}
+.design-nexus #main-nav>a[aria-current="location"]::after{transform:scaleX(1)}
+.design-nexus.is-home #main>section{scroll-margin-top:var(--header-height)}
+.design-nexus [tabindex="-1"]:focus{outline:none}
+html:has(.design-nexus){scroll-padding-top:0}
+@media(max-width:1050px){.design-nexus .brand>span{font-size:23px}.design-nexus .brand>img{width:48px}.design-nexus #main-nav{gap:16px;font-size:13px}.design-nexus .nav-cta .icon{display:none}}
+@media(max-width:900px){.design-nexus{--header-height:76px}.design-nexus .menu-toggle{display:flex}.design-nexus #main-nav{display:none;position:absolute;left:var(--pad);right:var(--pad);top:70px;padding:18px 22px;background:var(--paper);color:var(--ink);border:1px solid var(--line);box-shadow:0 10px 30px #0003;flex-direction:column;align-items:stretch;gap:12px;max-height:calc(100svh - 100px);overflow:auto}.design-nexus #main-nav.is-open{display:flex}.design-nexus #main-nav .nav-cta{margin-top:8px}.design-nexus .nav-cta .icon{display:inline}}
+@media(prefers-reduced-motion:reduce){.design-nexus #main-nav>a::after{transition:none}}

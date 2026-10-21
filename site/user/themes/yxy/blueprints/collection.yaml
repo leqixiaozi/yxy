@@ -1,0 +1,4 @@
+title: 内容栏目
+extends@:
+  type: default
+  context: blueprints://pages
