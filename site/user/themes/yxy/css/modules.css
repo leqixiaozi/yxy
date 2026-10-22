@@ -1,0 +1,77 @@
+.module-heading{display:flex;align-items:end;justify-content:space-between;gap:24px}
+.module-heading h2{margin-top:20px}
+.news-layout{display:grid;grid-template-columns:minmax(220px,.8fr) minmax(0,1.7fr);gap:8%;align-items:start}
+.news-intro h2{margin-top:24px}
+.news-intro .section-description{font-size:17px;line-height:1.9;margin-top:24px;color:var(--muted)}
+.news-all{margin-top:34px;font-size:15px}
+.news-feed-wrap{min-width:0}
+.news-list{list-style:none;padding:0;margin:0}
+.news-feed-scroll{max-height:460px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:#9aafd6 transparent;padding-right:18px;border-top:1px solid var(--line)}
+.news-feed-scroll::-webkit-scrollbar{width:5px}
+.news-feed-scroll::-webkit-scrollbar-thumb{background:#9aafd6;border-radius:5px}
+.news-feed-scroll:focus-visible{outline:3px solid #12a6ee;outline-offset:6px}
+.news-item{display:grid;grid-template-columns:68px minmax(0,1fr) 22px;gap:24px;padding:26px 0;border-bottom:1px solid var(--line);align-items:start}
+.news-date{display:grid;gap:4px;color:var(--muted);line-height:1.3;padding-top:2px}
+.news-date strong{font:500 25px/1.2 Inter,sans-serif;letter-spacing:-.04em;color:var(--ink)}
+.news-date>span{font:400 12px/1.4 Inter,sans-serif;letter-spacing:.08em}
+.news-meta{display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-size:12px;line-height:1.6;color:var(--blue);margin-bottom:10px}
+.news-copy .news-title{font-size:21px;font-weight:600;line-height:1.55;letter-spacing:-.02em;margin:0;color:var(--ink)}
+.news-summary{font-size:14px;line-height:1.9;color:var(--muted);margin-top:10px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.news-arrow{font-size:22px;color:var(--blue);padding-top:24px;transition:transform .2s}
+.news-item:hover .news-title{color:var(--blue)}
+.news-item:hover .news-arrow{transform:translate(3px,-3px)}
+.news-scroll-note{font-size:12px;line-height:1.7;color:var(--muted);margin-top:16px;display:flex;justify-content:space-between;gap:12px}
+.content-shell>.news-feed{margin-top:32px;border-top:1px solid var(--line)}
+.content-shell .article-news h1{font-size:clamp(28px,3vw,40px);line-height:1.45;letter-spacing:-.02em;text-wrap:pretty}
+.article-news .meta{font-size:13px;line-height:1.7;color:var(--muted);margin:16px 0 28px}
+.design-nexus.is-home .news-date strong,.design-nexus.is-home .news-title{color:#e3efff}
+.design-nexus.is-home .news-section{background:#081225}
+.design-nexus.is-home .news-all .icon{filter:invert(1)}
+@media(max-width:1000px){.news-layout{grid-template-columns:minmax(0,1fr);gap:36px}.news-intro .section-description br{display:none}.news-all{margin-top:20px}.news-feed-scroll{max-height:440px}}
+@media(max-width:760px){.news-item{grid-template-columns:49px minmax(0,1fr);gap:14px;padding:22px 0}.news-date strong{font-size:20px}.news-date>span{font-size:11px}.news-copy .news-title{font-size:18px}.news-arrow{display:none}.news-summary{font-size:14px}.news-feed-scroll{padding-right:12px;max-height:450px}.news-intro .section-description{font-size:16px}.news-meta{gap:8px}.news-layout{gap:30px}}
+.module-section .content-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.module-section .card-image{height:210px}
+.module-section .content-card h2{font-size:24px}
+.design-nexus.is-home .module-section{background:#081225}
+.design-nexus.is-home .module-section .text-link{color:#7be3f1}
+.design-nexus.is-home .module-section .icon{filter:invert(1)}
+.product-filters{display:flex;align-items:end;flex-wrap:wrap;gap:20px;margin-top:32px}
+.product-field{display:grid;gap:8px;font-size:14px;flex:1;min-width:180px}
+.product-filters input,.product-filters select{font:inherit;font-size:16px;padding:12px;border:1px solid var(--line);border-radius:0;background:var(--paper);color:var(--ink);width:100%;min-height:50px}
+.product-filters input:focus-visible,.product-filters select:focus-visible{outline:3px solid #12a6ee;outline-offset:3px}
+.product-filters .button{min-height:50px}
+.product-count{margin-top:24px;color:var(--muted);font-size:14px}
+.product-grid{margin-top:20px}
+[data-product-card][hidden],.product-empty[hidden]{display:none}
+.product-features{margin:32px 0}
+.product-features h2{font-size:26px}
+.product-features dl{margin-top:20px}
+.product-features dl>div{padding-block:16px;border-bottom:1px solid var(--line)}
+.product-features dt{font-weight:650}
+.product-features dd{margin:8px 0 0;color:var(--muted)}
+.product-screens{margin:40px 0}
+.product-screens h2{font-size:28px;line-height:1.4}
+.product-screens-note{font-size:14px;color:var(--muted);margin-top:10px}
+.product-screens figure{margin:26px 0 34px}
+.product-screens figure>a{display:block;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#f4f7fb;box-shadow:0 12px 35px #142b5110;transition:box-shadow .2s}
+.product-screens figure>a:hover{box-shadow:0 16px 40px #142b5126}
+.product-screens figure>a:focus-visible{outline:3px solid var(--blue);outline-offset:4px}
+.product-screens img{display:block;width:100%;height:auto}
+.product-screens figcaption{display:flex;justify-content:space-between;gap:16px;font-size:13px;color:var(--muted);line-height:1.7;margin-top:12px}
+.product-screens figcaption a{flex-shrink:0;color:var(--blue)}
+@media(min-width:761px){.product-features dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 40px}}
+@media(max-width:760px){.product-screens h2{font-size:24px}.product-screens figcaption{flex-direction:column;gap:4px}}
+/* Extra navigation entries use the existing mobile menu before they become crowded. */
+@media(max-width:1400px){
+  body.has-optional-modules:not(.design-constellation):not(.design-nexus) .menu-toggle{display:flex}
+  body.has-optional-modules:not(.design-constellation):not(.design-nexus) #main-nav{display:none;position:absolute;left:var(--pad);right:var(--pad);top:calc(100% - 1px);padding:18px 22px;background:var(--paper);color:var(--ink);border:1px solid var(--line);box-shadow:0 10px 30px #11224416;flex-direction:column;align-items:stretch;gap:12px;max-height:calc(100svh - 130px);overflow:auto}
+  body.has-optional-modules:not(.design-constellation):not(.design-nexus) #main-nav.is-open{display:flex}
+  body.has-optional-modules:not(.design-constellation):not(.design-nexus) #main-nav .nav-cta{margin-top:8px}
+}
+@media(max-width:760px){.module-heading{align-items:start;flex-direction:column;gap:16px}.module-section .content-grid{grid-template-columns:minmax(0,1fr)}.module-section .content-card h2{font-size:23px}.product-filters{align-items:stretch;flex-direction:column;gap:16px}.product-field{min-width:0}}
+
+/* Compact home news keeps native scrolling without visible chrome or summaries. */
+.news-feed-scroll{scrollbar-width:none;padding-right:0}
+.news-feed-scroll::-webkit-scrollbar{display:none}
+.news-feed-scroll .news-item{grid-template-columns:68px minmax(0,1fr)}
+@media(max-width:760px){.news-feed-scroll .news-item{grid-template-columns:49px minmax(0,1fr);padding-right:0}.news-feed-scroll{padding-right:0}}

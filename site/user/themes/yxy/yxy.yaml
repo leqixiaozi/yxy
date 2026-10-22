@@ -2,6 +2,10 @@ enabled: true
 default_design: flow
 motion_enabled: true
 preview_switcher: true
+module_news_enabled: false
+module_products_enabled: false
+module_cases_enabled: false
+module_sample_preview: false
 footer_icp_number: ''
 footer_icp_url: 'https://beian.miit.gov.cn/'
 footer_psb_number: ''

@@ -1,0 +1,13 @@
+{% set products = [] %}{% set categories = [] %}
+{% for item in page.children.published.routable.order('title','asc') %}{% if (not item.header.demo or (module_sample_preview and item.header.preview_sample)) and (not item.header.show_in_designs or design in item.header.show_in_designs) %}
+{% set products = products|merge([item]) %}{% set category = item.header.product_category|default('未分类') %}{% if category not in categories %}{% set categories = categories|merge([category]) %}{% endif %}
+{% endif %}{% endfor %}
+<div class="product-catalog">
+{% if products|length %}<div class="product-filters" role="search" aria-label="筛选产品">
+<div class="product-field"><label for="product-search">搜索产品</label><input id="product-search" type="search" class="product-search" placeholder="产品名称或关键词" autocomplete="off"></div>
+<div class="product-field"><label for="product-category">产品分类</label><select id="product-category" class="product-category"><option value="">全部分类</option>{% for category in categories|sort %}<option value="{{ category|e('html_attr') }}">{{ category|e }}</option>{% endfor %}</select></div>
+<button type="button" class="button product-reset">清空筛选</button></div>{% endif %}
+<p class="product-count" role="status">共 {{ products|length }} 项产品</p>
+<div class="content-grid product-grid">{% for item in products %}<div data-product-card data-category="{{ item.header.product_category|default('未分类')|e('html_attr') }}">{% include 'partials/content-card.html.twig' with {'item':item} %}</div>{% endfor %}</div>
+<p class="empty product-empty" {% if products|length %}hidden{% endif %}>{{ products|length ? '没有符合条件的产品，请调整筛选。' : '产品资料正在整理中。' }}</p>
+</div>

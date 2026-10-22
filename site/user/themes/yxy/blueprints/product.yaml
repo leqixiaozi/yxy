@@ -1,0 +1,66 @@
+title: 软件产品
+extends@:
+  type: default
+  context: 'blueprints://pages'
+form:
+  fields:
+    tabs:
+      fields:
+        content:
+          title: 产品内容
+          fields:
+            header.title:
+              label: 产品名称
+            header.summary:
+              type: textarea
+              label: 产品简要介绍
+            header.product_category:
+              type: text
+              label: 产品分类
+              help: 相同分类名称会自动归为一组，供产品库筛选。
+            header.product_version:
+              type: text
+              label: 版本或型号
+            header.product_audience:
+              type: textarea
+              label: 适用场景与对象
+            header.product_screenshots:
+              type: list
+              label: 系统界面预览
+              help: 先上传图片，再填写完整文件名；详情按列表顺序展示，可点击查看大图。
+              fields:
+                .image:
+                  type: text
+                  label: 图片文件名
+                .caption:
+                  type: text
+                  label: 界面说明
+            header.product_features:
+              type: list
+              label: 主要功能
+              fields:
+                .title:
+                  type: text
+                  label: 功能名称
+                .description:
+                  type: textarea
+                  label: 功能说明
+            content:
+              label: 产品详细介绍
+              help: 填写真实功能、适用范围和使用条件；不要仅凭软件著作权证书认定产品已可售。
+            header.media_order:
+              label: 产品配图与附件
+            header.demo:
+              type: toggle
+              label: 仅作为本地演示
+              help: 默认不对外展示；带样例标记的记录可通过主题中的演示预览开关查看，静态导出始终排除。
+              default: 0
+              options:
+                1: 是
+                0: 否
+              validate:
+                type: bool
+        options:
+          title: 发布设置
+        advanced:
+          title: 页面设置

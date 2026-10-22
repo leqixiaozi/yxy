@@ -1,0 +1,84 @@
+{# Native circuit paths reuse the original ambient line, flow and node motion. #}
+{% set circuit_areas = ['services', 'approach', 'about', 'qualifications', 'products', 'news', 'contact'] %}
+{% if area in circuit_areas %}
+{% if area == 'services' %}
+  {% set traces = ['M0 190H390L470 110H590M638 110H830', 'M0 214H420L500 134H830', 'M960 86H1090L1150 26H1200', 'M960 110H1120L1180 50H1200'] %}
+  {% set nodes = [[390,190],[1090,86]] %}
+{% elseif area == 'approach' %}
+  {% set traces = ['M0 190H244M296 190H490L580 130H644M696 130H850L940 70H984M1036 70H1200', 'M0 220H450L540 160H810L900 100H1200'] %}
+  {% set nodes = [[490,190],[850,130]] %}
+{% elseif area == 'about' %}
+  {% set traces = ['M0 190H410L520 80H790', 'M0 210H440L550 100H790', 'M0 230H470L580 120H790', 'M930 80H1080L1140 20H1200', 'M930 100H1110L1170 40H1200', 'M930 120H1140L1200 60'] %}
+  {% set nodes = [[410,190],[1080,80]] %}
+{% elseif area == 'qualifications' %}
+  {% set traces = ['M0 192H460L540 112H780', 'M0 216H490L570 136H804', 'M852 88H1040L1100 28H1200', 'M852 112H1070L1130 52H1200', 'M852 136H1100L1160 76H1200'] %}
+  {% set nodes = [[460,192],[1040,88]] %}
+{% elseif area == 'products' %}
+  {% set traces = ['M0 180H260M320 180H410L490 100H630M650 100H770M850 100H1020L1100 20H1200', 'M0 216H430L510 136H1020L1100 216H1200'] %}
+  {% set nodes = [[410,180],[1020,136]] %}
+{% elseif area == 'news' %}
+  {% set traces = ['M0 180H380L460 100H540L560 60L585 150L610 80L630 100H850M970 100H1090L1170 20H1200', 'M0 216H410L490 136H800L860 196H1200'] %}
+  {% set nodes = [[380,180],[1090,100]] %}
+{% else %}
+  {% set traces = ['M0 60H300L430 130H790', 'M0 130H790', 'M0 200H300L430 154H790', 'M930 130H1080L1150 60H1200', 'M930 154H1110L1180 84H1200'] %}
+  {% set nodes = [[300,60],[300,200],[1080,130]] %}
+{% endif %}
+<div class="section-backdrop circuit-frame circuit-layout-{{ area }} backdrop-{{ area }}" aria-hidden="true">
+<svg class="circuit-vector" viewBox="-1000 0 3200 260" preserveAspectRatio="xMidYMid meet" focusable="false" fill="none">
+  <defs>
+    <linearGradient id="circuit-surface-{{ area }}" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#edfaff"/><stop offset=".55" stop-color="#d4ecff"/><stop offset="1" stop-color="#e7e1ff"/>
+    </linearGradient>
+    <linearGradient id="circuit-core-{{ area }}" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#bceef6"/><stop offset="1" stop-color="#b9ccfa"/>
+    </linearGradient>
+  </defs>
+  {% set edge_levels = {
+    'services': [[190,214],[26,50]], 'approach': [[190,220],[70,100]],
+    'about': [[190,210,230],[20,40,60]], 'qualifications': [[192,216],[28,52,76]],
+    'products': [[180,216],[20,216]], 'news': [[180,216],[20,196]], 'contact': [[60,130,200],[60,84]]
+  } %}
+  {% for y in edge_levels[area][0] %}<path class="ambient-line circuit-tone-{{ loop.index0 % (area in ['about','contact'] ? 3 : 2) }}" d="M-1000 {{ y }}H0"/><path class="ambient-flow circuit-tone-{{ loop.index0 % (area in ['about','contact'] ? 3 : 2) }}" pathLength="100" d="M-1000 {{ y }}H0"/>{% endfor %}
+  {% for y in edge_levels[area][1] %}<path class="ambient-line circuit-tone-{{ loop.index0 % (area in ['about','contact'] ? 3 : 2) }}" d="M1200 {{ y }}H2200"/><path class="ambient-flow circuit-tone-{{ loop.index0 % (area in ['about','contact'] ? 3 : 2) }}" pathLength="100" d="M1200 {{ y }}H2200"/>{% endfor %}
+  {% for trace in traces %}<path class="ambient-line circuit-tone-{{ loop.index0 % (area in ['about','contact'] ? 3 : 2) }}" d="{{ trace }}"/><path class="ambient-flow circuit-tone-{{ loop.index0 % (area in ['about','contact'] ? 3 : 2) }}" pathLength="100" d="{{ trace }}"/>{% endfor %}
+  <g class="circuit-components ambient-line">
+  {% if area == 'services' %}
+    <rect class="circuit-device" fill="url(#circuit-surface-{{ area }})" x="830" y="50" width="130" height="130" rx="9"/><rect class="circuit-core" fill="url(#circuit-core-{{ area }})" x="848" y="68" width="94" height="94" rx="4"/>
+    {% for i in 0..4 %}<path d="M{{ 847+i*24 }} 38V50M{{ 847+i*24 }} 180V192M818 {{ 62+i*24 }}H830M960 {{ 62+i*24 }}H972"/>{% endfor %}
+    <path d="M590 110V103H638V117H590V110"/>
+  {% elseif area == 'approach' %}
+    {% for point in [[270,190],[670,130],[1010,70]] %}<circle cx="{{ point[0] }}" cy="{{ point[1] }}" r="26"/><circle cx="{{ point[0] }}" cy="{{ point[1] }}" r="12"/>{% endfor %}
+  {% elseif area == 'about' %}
+    <rect class="circuit-device" fill="url(#circuit-surface-{{ area }})" x="790" y="52" width="140" height="100" rx="6"/>
+    {% for i in 0..4 %}<path d="M{{ 808+i*25 }} 70V134"/>{% endfor %}
+    <path d="M820 152V170H900V152"/>
+  {% elseif area == 'qualifications' %}
+    {% for x in 0..3 %}{% for y in 0..2 %}<circle cx="{{ 780+x*24 }}" cy="{{ 88+y*24 }}" r="7"/>{% endfor %}{% endfor %}
+    <path d="M760 72V60H872V72M760 152V164H872V152"/>
+  {% elseif area == 'products' %}
+    <path d="M260 180V172H320V188H260V180M630 76V124M650 76V124"/>
+    <rect class="circuit-device" fill="url(#circuit-surface-{{ area }})" x="770" y="76" width="80" height="48" rx="7"/><path d="M786 86V114M834 86V114"/>
+    <path d="M1020 112 1041 124V148L1020 160 999 148V124ZM1062 112 1083 124V148L1062 160 1041 148V124Z"/>
+  {% elseif area == 'news' %}
+    <rect class="circuit-device" fill="url(#circuit-surface-{{ area }})" x="850" y="58" width="120" height="84" rx="6"/><path d="M862 116H880L890 88L906 116L925 78L940 100H958M880 142V154H940V142"/>
+  {% else %}
+    <rect class="circuit-device" fill="url(#circuit-surface-{{ area }})" x="790" y="100" width="140" height="84" rx="6"/>
+    {% for i in 0..4 %}<path d="M{{ 810+i*24 }} 116V168"/>{% endfor %}
+    <path d="M830 100V88H890V100"/>
+  {% endif %}
+  </g>
+  <g class="ambient-nodes">{% for node in nodes %}<circle cx="{{ node[0] }}" cy="{{ node[1] }}" r="3"/>{% endfor %}</g>
+  <circle class="ambient-signal" cx="{{ nodes[0][0] }}" cy="{{ nodes[0][1] }}" r="8"/>
+</svg>
+</div>
+{% set top_traces = {
+  'services':'M0 42H210L240 12H470M0 52H225L255 22H380',
+  'approach':'M0 20H180L210 50H420M0 10H195L225 40H510',
+  'about':'M0 46H150L180 16H410M0 56H165L195 26H500',
+  'qualifications':'M0 18H200L230 48H460M0 8H215L245 38H380',
+  'products':'M0 44H260L290 14H500M0 54H275L305 24H430',
+  'news':'M0 40H170L185 18L200 40H450M0 50H230L255 25H510',
+  'contact':'M0 12H170L200 42H460M0 22H155L185 52H400'
+} %}
+<div class="section-backdrop circuit-crown" aria-hidden="true"><svg viewBox="0 0 540 64" preserveAspectRatio="xMidYMid meet" focusable="false" fill="none"><path class="ambient-line" d="{{ top_traces[area] }}"/><path class="ambient-flow" pathLength="100" d="{{ top_traces[area] }}"/></svg></div>
+{% endif %}

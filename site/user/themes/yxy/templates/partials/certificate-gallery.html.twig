@@ -1,9 +1,15 @@
 <div class="certificate-gallery">
   <div class="certificate-grid" aria-label="企业资质证书">
-    {% for certificate in government_certificates %}{% include 'partials/certificate-card.html.twig' %}{% endfor %}
+    {% for certificate in government_certificates %}{% include 'partials/certificate-card.html.twig' with {'certificate_static': page.template == 'home'} %}{% endfor %}
   </div>
+  {% if page.template == 'home' %}{% include 'partials/certificate-rail.html.twig' %}{% else %}
   {% if credit_certificates|length %}<details class="credit-certificates">
     <summary><span>信用评价证书 <small>{{ credit_certificates|length }} 项</small></span><span class="credit-toggle" aria-hidden="true">+</span></summary>
-    <div class="certificate-grid credit-grid" aria-label="第三方信用评价证书">{% for certificate in credit_certificates %}{% include 'partials/certificate-card.html.twig' %}{% endfor %}</div>
+    <div class="certificate-grid credit-grid" aria-label="第三方信用评价证书">{% for certificate in credit_certificates %}{% include 'partials/certificate-card.html.twig' with {'certificate_static': false} %}{% endfor %}</div>
   </details>{% endif %}
+  {% if ip_certificates|length %}<details class="credit-certificates ip-certificates">
+    <summary><span>知识产权证书 <small>{{ ip_certificates|length }} 项</small></span><span class="credit-toggle" aria-hidden="true">+</span></summary>
+    <div class="certificate-grid credit-grid ip-grid" aria-label="知识产权证书">{% for certificate in ip_certificates %}{% include 'partials/certificate-card.html.twig' with {'certificate_static': false} %}{% endfor %}</div>
+  </details>{% endif %}
+  {% endif %}
 </div>

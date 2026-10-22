@@ -10,6 +10,7 @@ issued_on: '2026-05-25'
 valid_until: '2029-05-24'
 summary: 企业提供的第三方信用评价证书。
 preview_image: certificate-preview.webp
+strip_image: certificate-strip.webp
 original_image: certificate-original.jpg
 media_order: 'certificate-original.jpg,certificate-preview.webp'
 ---

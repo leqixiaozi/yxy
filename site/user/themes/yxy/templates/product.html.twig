@@ -1,0 +1,15 @@
+{% extends 'partials/article.html.twig' %}
+{% block facts %}
+{% if page.header.product_category or page.header.product_version or page.header.product_audience %}<dl class="facts">
+{% if page.header.product_category %}<div><dt>产品分类</dt><dd>{{ page.header.product_category|e }}</dd></div>{% endif %}
+{% if page.header.product_version %}<div><dt>版本或型号</dt><dd>{{ page.header.product_version|e }}</dd></div>{% endif %}
+{% if page.header.product_audience %}<div><dt>适用场景</dt><dd>{{ page.header.product_audience|e }}</dd></div>{% endif %}
+</dl>{% endif %}
+{% endblock %}
+{% block media %}
+{% if page.header.product_screenshots %}<section class="product-screens" aria-labelledby="product-screens-title"><h2 id="product-screens-title">系统界面</h2><p class="product-screens-note">点击图片查看完整界面。</p>
+{% for screen in page.header.product_screenshots %}{% set image = page.media[screen.image] %}{% if image %}<figure><a href="{{ image.url }}" target="_blank" rel="noopener" aria-label="查看{{ screen.caption|e }}大图"><img src="{{ image.url }}" alt="{{ screen.caption|e }}" width="1440" height="900" loading="lazy"></a><figcaption>{{ screen.caption|e }}<a href="{{ image.url }}" target="_blank" rel="noopener">查看大图 ↗</a></figcaption></figure>{% endif %}{% endfor %}</section>{% else %}{{ parent() }}{% endif %}
+{% endblock %}
+{% block after_media %}
+{% if page.header.product_features %}<section class="product-features" aria-labelledby="product-features-title"><h2 id="product-features-title">主要功能</h2><dl>{% for feature in page.header.product_features %}<div><dt>{{ feature.title|e }}</dt><dd>{{ feature.description|e }}</dd></div>{% endfor %}</dl></section>{% endif %}
+{% endblock %}

@@ -1,0 +1,99 @@
+{
+  "generator": "built-in image_gen",
+  "reference": "design-options/motion/circuit-seven-sections.png",
+  "scope": "design-constellation only",
+  "art_direction": "Transparent premium cobalt/cyan fine circuit linework. Each component is drawn with its connected leads. No text, UI, frames or company claims. Exact prompts for services/approach/about/qualifications are in adjacent asset.json files.",
+  "assets": [
+    {
+      "name": "services",
+      "dimensions": [
+        2172,
+        724
+      ],
+      "bytes": 153358,
+      "alpha": [
+        0,
+        255
+      ],
+      "prompt_brief": "Three leads enter actual chip pins, small series resistor."
+    },
+    {
+      "name": "approach",
+      "dimensions": [
+        1983,
+        793
+      ],
+      "bytes": 78602,
+      "alpha": [
+        0,
+        255
+      ],
+      "prompt_brief": "Three ring test points in an ascending connected signal path."
+    },
+    {
+      "name": "about",
+      "dimensions": [
+        2172,
+        724
+      ],
+      "bytes": 133980,
+      "alpha": [
+        0,
+        255
+      ],
+      "prompt_brief": "Five-contact connector fans out into parallel angled bus traces."
+    },
+    {
+      "name": "qualifications",
+      "dimensions": [
+        2172,
+        724
+      ],
+      "bytes": 85614,
+      "alpha": [
+        0,
+        255
+      ],
+      "prompt_brief": "Flat 3x4 solder pad array with vias and connected traces, no glow."
+    },
+    {
+      "name": "products",
+      "dimensions": [
+        2172,
+        724
+      ],
+      "bytes": 148088,
+      "alpha": [
+        0,
+        255
+      ],
+      "prompt_brief": "Three hexagonal cells connect to capacitor, resistor and capsule oscillator."
+    },
+    {
+      "name": "news",
+      "dimensions": [
+        2172,
+        724
+      ],
+      "bytes": 116684,
+      "alpha": [
+        0,
+        255
+      ],
+      "prompt_brief": "Square digital pulses feed a small circular waveform observation terminal."
+    },
+    {
+      "name": "contact",
+      "dimensions": [
+        2172,
+        724
+      ],
+      "bytes": 133382,
+      "alpha": [
+        0,
+        255
+      ],
+      "prompt_brief": "Three angled signal leads converge into one concentric circular terminal with an outgoing lead."
+    }
+  ]
+}

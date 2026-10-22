@@ -1,0 +1,7 @@
+/* Visibility preserves the original line breaks and prevents layout movement while typing. */
+.type-heading .type-char{visibility:hidden;position:relative}
+.type-heading .type-char.is-typed{visibility:visible}
+.type-heading .type-char.is-current::after{content:'';position:absolute;right:-.035em;top:.12em;width:2px;height:.82em;background:currentColor;animation:type-caret .65s steps(1,end) infinite}
+body.page-hidden .type-heading .type-char::after{animation-play-state:paused}
+@keyframes type-caret{50%{opacity:0}}
+@media(prefers-reduced-motion:reduce){.type-heading .type-char{visibility:visible}.type-heading .type-char::after{display:none}}

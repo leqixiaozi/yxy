@@ -1,0 +1,5 @@
+<section class="section wrap module-section" id="{{ module_id }}" aria-labelledby="{{ module_id }}-title">
+  {% if focused_design %}{% include 'partials/section-backdrop.html.twig' with {'area':module_id} %}{% endif %}
+  <div class="module-heading"><div><p class="eyebrow">{{ module_english|e }}</p><h2 id="{{ module_id }}-title">{{ module_title|e }}</h2></div><a class="text-link" href="{{ base_url_relative }}/{{ module_id }}{{ design_query }}">查看全部 <img class="icon" src="{{ url('theme://icons/arrow-right.svg') }}" alt=""></a></div>
+  <div class="content-grid">{% for item in module_items|slice(0,3) %}{% include 'partials/content-card.html.twig' with {'item':item} %}{% endfor %}</div>
+</section>

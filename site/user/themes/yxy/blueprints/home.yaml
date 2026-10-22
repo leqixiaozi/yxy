@@ -25,13 +25,13 @@ form:
               label: 数据光流：强调文字
             header.constellation_line1:
               type: text
-              label: 数字星图：标题第一行
+              label: 方案02/04：标题第一行
             header.constellation_line2:
               type: text
-              label: 数字星图：标题第二行
+              label: 方案02/04：标题第二行
             header.constellation_emphasis:
               type: text
-              label: 数字星图：强调文字
+              label: 方案02/04：强调文字
             header.studio_line1:
               type: text
               label: 工作室：英文第一行
@@ -46,13 +46,16 @@ form:
               label: 工作室：中文副标题
             header.nexus_line1:
               type: text
-              label: 数字脉冲：标题第一行
+              label: 数字脉冲旧版：标题第一行（保留）
+              help: 当前方案04与02共用上方文案，此旧字段仅保留历史内容。
             header.nexus_line2:
               type: text
-              label: 数字脉冲：标题第二行
+              label: 数字脉冲旧版：标题第二行（保留）
+              help: 当前方案04与02共用上方文案，此旧字段仅保留历史内容。
             header.nexus_emphasis:
               type: text
-              label: 数字脉冲：强调文字
+              label: 数字脉冲旧版：强调文字（保留）
+              help: 当前方案04与02共用上方文案，此旧字段仅保留历史内容。
             header.intro:
               type: text
               label: 首页定位说明
@@ -69,7 +72,7 @@ form:
               help: 同步顶部导航与对应区块称呼；不影响方案01/03。
             header.constellation_services_heading:
               type: textarea
-              label: 数字星图：服务区标题
+              label: 方案02/04：服务区标题
             header.services_heading:
               type: textarea
               label: 服务区标题
@@ -106,7 +109,50 @@ form:
             header.contact_note:
               type: text
               label: 未配置联系方式时的说明
+            header.constellation_intro:
+              type: textarea
+              label: 方案02/04：首屏业务说明
+            header.constellation_services_intro:
+              type: textarea
+              label: 方案02/04：服务区介绍
+            header.constellation_about_intro:
+              type: textarea
+              label: 方案02/04：企业简介
+            header.constellation_services:
+              type: list
+              label: 方案02/04：结构化服务内容
+              help: 用于方案02/04，不影响01/03；按已确认业务维护，不填写未经证实的成果或承诺。
+              fields:
+                .title:
+                  type: text
+                  label: 名称
+                .summary:
+                  type: textarea
+                  label: 简要说明
+                .scope:
+                  type: textarea
+                  label: 服务内容
+                .delivery:
+                  type: textarea
+                  label: 交付安排
+                .boundary:
+                  type: textarea
+                  label: 合作边界
+            header.constellation_approach_steps:
+              type: list
+              label: 方案02/04：合作流程
+              fields:
+                .title:
+                  type: text
+                  label: 步骤名称
+                .description:
+                  type: textarea
+                  label: 沟通与实施内容
+                .output:
+                  type: textarea
+                  label: 共同确认事项
             header.services:
+              # Legacy shared content retained for designs 01/03.
               type: list
               label: 服务内容
               help: 请按真实业务范围维护，勿将设计示意写成既有交付成果。

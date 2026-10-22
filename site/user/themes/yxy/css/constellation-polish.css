@@ -1,0 +1,102 @@
+/* Design 02: colored focal words and circuit traces outside reading areas. */
+.design-constellation{--muted:#4e5e7b}
+.design-constellation .hero h1{font-size:clamp(48px,6vw,84px);font-weight:750;letter-spacing:-.04em}
+.design-constellation .hero-intro{font-size:clamp(20px,1.7vw,24px);max-width:540px;line-height:1.7}
+.design-constellation .interaction-hint{font-size:12px;color:var(--muted)}
+.design-constellation .section h2,.design-constellation .qualifications .section-intro h2{font-size:clamp(36px,3.4vw,48px);font-weight:650;line-height:1.35;letter-spacing:-.025em}
+.design-constellation .eyebrow{font-size:12px;letter-spacing:.2em}
+.design-constellation .section-description{font-size:18px;line-height:1.85;margin-top:24px}
+.design-constellation .services{grid-template-columns:38% minmax(0,1fr);gap:9%;align-items:center}
+.design-constellation.is-home #main>section#services{padding-bottom:128px;background:#fff}
+.design-constellation.is-home #services .section-backdrop{display:none}
+.design-constellation.is-home #main>section#services::after{opacity:.3;animation:none}
+.design-constellation .service-heading{grid-template-columns:40px minmax(0,1fr);gap:20px;padding:28px 0 18px}
+.design-constellation .service-icon{width:32px;height:32px}
+.design-constellation .service-title{font-size:25px;font-weight:650}
+.design-constellation .service-summary{font-size:17px;margin-top:8px;max-width:none}
+.design-constellation .service-facts{margin:0;padding:0 0 28px 60px;font-size:16px;line-height:1.8;color:var(--muted)}
+.design-constellation .service-facts>div{display:grid;grid-template-columns:70px minmax(0,1fr);gap:14px;margin-top:14px}
+.design-constellation .service-facts dt{font-size:13px;font-weight:550;color:var(--ink);padding-top:3px}
+.design-constellation .service-facts dd{margin:0}
+.design-constellation .approach-steps{gap:26px;margin-top:36px}
+.design-constellation .approach-steps p{font-size:16px;line-height:1.8;margin-top:12px}
+.design-constellation .approach-steps .step-output{display:block;font-size:14px;line-height:1.8;color:var(--ink);font-weight:450;margin-top:16px}
+.design-constellation .about-grid{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:10%}
+.design-constellation .company-facts>div{display:grid;grid-template-columns:90px minmax(0,1fr);gap:20px;align-items:center}
+.design-constellation .company-facts strong{font-size:clamp(20px,1.8vw,26px);font-weight:550;text-align:right}
+.design-constellation.is-home #main>section#about{padding-bottom:112px}
+.design-constellation.is-home #about .section-backdrop{inset:auto 16px 16px;height:56px;opacity:.45;mask-image:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent)}
+.design-constellation.is-home #about .section-backdrop svg{width:100%;height:100%;margin-left:0}
+.design-constellation.is-home #about .ambient-nodes,.design-constellation.is-home #about .ambient-signal{display:none}
+.design-constellation.is-home #main>section#about::after{opacity:.2}
+.design-constellation .qualifications{align-items:start;grid-template-columns:26% minmax(0,1fr);gap:6%}
+.design-constellation .qualifications:has(.certificate-showcase){align-items:start}
+.design-constellation .qualifications .section-intro{padding-top:36px}
+.design-constellation.is-home #qualifications .section-backdrop{display:none}
+.design-constellation.is-home #main>section#qualifications::after{opacity:.2;animation:none}
+.design-constellation .certificate-groups{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px}
+.design-constellation .certificate-groups>.certificate-showcase{min-width:0}
+.design-constellation .certificate-showcase{margin-top:28px;padding-top:20px}
+.design-constellation .certificate-showcase-heading h3{font-size:17px;font-weight:600}
+.design-constellation .certificate-rail-kind{font-size:12px;letter-spacing:0;margin-top:10px}
+.design-constellation .certificate-rail-name{font-size:14px;line-height:1.6;min-height:45px;font-weight:500}
+.design-constellation .certificate-caption h3{font-size:19px;font-weight:600}
+.design-constellation .contact-actions>a[href^='tel:']{font-weight:600}
+.design-constellation .contact-details p{font-size:16px;line-height:1.8}
+/* Keep title entrances short; sustained effects stay in decorative layers. */
+.design-constellation .motion-heading .title-word{color:#2947e7}
+.design-constellation #approach-title .title-line:nth-child(2) .title-word{color:#8045bf}
+.design-constellation #about-title .title-word,.design-constellation #contact-title .title-word{color:#087c9c}
+.design-constellation .motion-heading .title-char{animation:none!important;transform:none!important;opacity:1!important;background:none!important;-webkit-text-fill-color:currentColor!important}
+.design-constellation .motion-heading .title-word::after{display:none}
+.design-constellation .motion-heading.title-active .title-line{animation:constellation-enter .55s ease-out both;animation-delay:calc(var(--title-line) * .1s)}
+@keyframes constellation-enter{from{opacity:.55;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media(max-width:1100px){.design-constellation .certificate-groups{grid-template-columns:minmax(0,1fr);gap:0}}
+@media(max-width:1050px){.design-constellation .services{grid-template-columns:38% minmax(0,1fr);gap:7%}.design-constellation .service-facts{padding-left:0}.design-constellation .service-facts>div{grid-template-columns:64px minmax(0,1fr);gap:12px}.design-constellation .about-grid{gap:7%}}
+@media(max-width:900px){.design-constellation .preview-tools{position:static;max-width:calc(100% - 2 * var(--pad));margin:0 var(--pad) 24px;display:block}.design-constellation .preview-tools summary{display:inline-block}.design-constellation .design-options{position:static;min-width:0;width:100%;margin-top:10px}.design-constellation.is-home .site-footer{padding-bottom:28px}}
+@media(max-width:760px){.design-constellation .hero h1{font-size:clamp(36px,8.8vw,60px)}.design-constellation .hero-intro{font-size:18px!important}.design-constellation .section h2,.design-constellation .qualifications .section-intro h2{font-size:32px;line-height:1.35}.design-constellation .eyebrow{font-size:11px;letter-spacing:.16em}.design-constellation .section-description{font-size:17px}.design-constellation .services,.design-constellation .about-grid,.design-constellation .qualifications{grid-template-columns:minmax(0,1fr);gap:32px}.design-constellation.is-home #main>section#services{padding-bottom:104px}.design-constellation.is-home #main>section#services::after{height:64px;background-size:auto 240px}.design-constellation .service-heading{grid-template-columns:34px minmax(0,1fr);gap:16px;padding-top:26px}.design-constellation .service-title{font-size:23px}.design-constellation .service-summary{font-size:16px;line-height:1.8}.design-constellation .service-facts>div{grid-template-columns:64px minmax(0,1fr);gap:12px}.design-constellation .service-facts{font-size:16px;padding-bottom:26px}.design-constellation .approach-steps .step-output{padding-left:0;position:static;font-size:14px;margin-top:10px}.design-constellation .company-facts>div{grid-template-columns:80px minmax(0,1fr);gap:16px}.design-constellation .company-facts strong{font-size:20px}.design-constellation .qualifications .section-intro{padding-top:0}.design-constellation.is-home #main>section#about{padding-bottom:96px}.design-constellation.is-home #about .section-backdrop{height:40px}}
+@media(hover:none){.design-constellation .interaction-hint .pointer-hint{display:none}.design-constellation .interaction-hint .touch-hint{display:inline}}
+@media(hover:hover){.design-constellation .interaction-hint .touch-hint{display:none}}
+@media(max-width:900px){.design-constellation .interaction-hint .pointer-hint{display:none}.design-constellation .interaction-hint .touch-hint{display:inline}}
+@media(prefers-reduced-motion:reduce){.design-constellation .motion-heading.title-active .title-line{animation:none}}
+/* Use the original native circuit motion, with a different connected topology per section. */
+.design-constellation.is-home #main>section:not(#home){--circuit-width:min(calc(100vw - 2 * var(--pad)),1640px);--circuit-height:clamp(40px,calc(var(--circuit-width) * .08125),134px);padding-top:80px;padding-bottom:calc(var(--circuit-height) + 24px)}
+.design-constellation.is-home #main>section .section-backdrop.circuit-frame{display:block;inset:auto 0 0;height:var(--circuit-height);opacity:1;mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);overflow:hidden;pointer-events:none}
+.design-constellation.is-home #main>section .circuit-frame .circuit-vector{width:var(--circuit-width);height:100%;max-width:none;margin:0 auto;overflow:visible}
+.design-constellation.is-home #main>section .circuit-frame .ambient-nodes,.design-constellation.is-home #main>section .circuit-frame .ambient-signal,.design-constellation.is-home #main>section .circuit-frame circle{display:initial}
+.design-constellation .circuit-frame .circuit-components{stroke-linejoin:round;stroke-linecap:round;opacity:.34}
+.design-constellation .circuit-frame .ambient-line{stroke-width:1}
+.design-constellation .circuit-frame .ambient-flow{stroke-width:1.5}
+.design-constellation #main>section#products{--travel-time:11s}
+.design-constellation #main>section#news{--travel-time:10s}
+.design-constellation .service-facts dt{color:#2947c9}
+.design-constellation .approach-steps li{border-top-color:#c5c7e8;position:relative}
+.design-constellation .approach-steps li::before{content:'';position:absolute;top:-1px;left:0;width:30px;height:2px;background:#7953bd}
+.design-constellation.is-home #main>section:is(#services,#approach,#about,#qualifications,#products,#cases,#news,#contact){background:#f8fbff;--ambient-cyan:#498bde08;--ambient-purple:#498bde04;--ambient-blue:#498bde06;--glow-position:80% 70%}
+.design-constellation.is-home #main>section:is(#services,#approach,#about,#qualifications,#products,#cases,#news,#contact)::after{opacity:.25;animation:none}
+@media(max-width:760px){
+  .design-constellation.is-home #main>section:not(#home){padding-top:64px;padding-bottom:calc(var(--circuit-height) + 24px)}
+}
+
+
+/* A small upper trace echoes the lower circuit inside existing section padding. */
+.design-constellation.is-home #main>section .section-backdrop.circuit-crown{display:block;inset:12px auto auto var(--pad);width:min(38%,540px);height:40px;opacity:.72;mask-image:linear-gradient(90deg,transparent,#000 18%,#000 75%,transparent);pointer-events:none}
+.design-constellation.is-home #main>section .circuit-crown svg{width:100%;height:100%;margin:0}
+.design-constellation.is-home #main>section:is(#approach,#qualifications,#news) .circuit-crown{left:auto;right:var(--pad);transform:scaleX(-1)}
+.design-constellation .circuit-crown .ambient-flow{animation-delay:-4s}
+@media(max-width:760px){.design-constellation.is-home #main>section .section-backdrop.circuit-crown{top:10px;width:52%;height:28px}}
+
+/* Cool colored conductors and softly tinted components retain the compact layout. */
+.design-constellation .circuit-frame .ambient-line{stroke:#3987e8;opacity:.56}
+.design-constellation .circuit-frame .ambient-flow{stroke:#287eff;opacity:.86}
+.design-constellation .circuit-frame .circuit-tone-1{stroke:#18aec8}
+.design-constellation .circuit-frame .circuit-tone-2{stroke:#8b6cdb}
+.design-constellation .circuit-frame .circuit-components{stroke:#3e83cf;opacity:.9}
+.design-constellation .circuit-frame .circuit-components>*{vector-effect:non-scaling-stroke;stroke-width:1.1}
+.design-constellation .circuit-frame .circuit-components>circle{fill:#e2f4ff;stroke:#47a0d6}
+.design-constellation .circuit-frame .circuit-components>circle:nth-child(3n){fill:#eae5fc;stroke:#9476db}
+.design-constellation .circuit-frame .ambient-nodes{fill:#28a7df;opacity:.75}
+.design-constellation .circuit-frame .ambient-nodes circle:nth-child(2n){fill:#8b6cdb}
+.design-constellation .circuit-frame .ambient-signal{stroke:#7b69d6}
+.design-constellation .circuit-crown .ambient-line{stroke:#408fe3;opacity:.5}
+.design-constellation .circuit-crown .ambient-flow{stroke:#17a9c4;opacity:.85}

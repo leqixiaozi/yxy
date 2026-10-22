@@ -1,7 +1,7 @@
 ---
-title: 新闻动态
+title: 企业新闻
 visible: false
 english_label: 'NEWS & INSIGHTS'
 ---
 
-企业新闻与动态。
+公司动态、技术分享、团队活动与行业观察。

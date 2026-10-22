@@ -6,9 +6,38 @@ published: true
 flow_line1: 让软件，
 flow_line2: 连接业务
 flow_emphasis: 未来。
-constellation_line1: 以软件能力，
-constellation_line2: 连接每一个
-constellation_emphasis: 可能。
+constellation_line1: 以软件能力
+constellation_line2: 链接每一个
+constellation_emphasis: 可能
+constellation_intro: 软件开发、信息技术咨询与技术支持。
+constellation_services_intro: 围绕企业业务需求，梳理问题、讨论方案，推进软件实现与验证。
+constellation_about_intro: 深圳市屹鑫元科技有限公司成立于2021年11月12日，立足深圳市宝安区，面向企业开展软件开发、信息技术咨询与技术服务。
+constellation_services:
+    -
+        title: 软件开发
+        summary: 从需求梳理到软件实现。
+        scope: 结合业务流程与使用场景，梳理功能需求并开展软件实现。
+        delivery: 按双方确认的功能范围，推进软件实现与验证。
+        boundary: 开发范围、实施安排与后续维护方式，以双方确认的项目约定为准。
+    -
+        title: 技术咨询与支持
+        summary: 围绕系统使用与技术问题，梳理可行方案。
+        scope: 沟通现有系统、使用场景与待解决的技术问题。
+        delivery: 围绕问题梳理可行方案，并提供约定范围内的技术支持。
+        boundary: 咨询内容、支持方式与响应安排，根据具体需求共同确认。
+constellation_approach_steps:
+    -
+        title: 理解需求
+        description: 沟通业务目标、使用场景与当前问题。
+        output: 共同明确：需求重点与待确认事项。
+    -
+        title: 梳理方案
+        description: 讨论功能范围、优先级与实现路径。
+        output: 共同明确：项目范围与实施安排。
+    -
+        title: 实现与验证
+        description: 根据约定推进软件实现与使用验证。
+        output: 共同确认：验收结果与后续事项。
 studio_line1: 'Good software.'
 studio_emphasis: Thoughtfully
 studio_line2: built.

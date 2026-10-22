@@ -1,0 +1,8 @@
+{% if news_items|length %}<div class="news-feed{{ compact ? ' news-feed-scroll' : '' }}" {% if compact %}tabindex="0" role="region" aria-label="企业新闻，可上下滚动浏览"{% endif %}>
+<ol class="news-list">{% for item in news_items %}<li><a class="news-item" href="{{ item.url }}{{ design_query }}">
+<time class="news-date" datetime="{{ item.date|date('c') }}"><strong>{{ item.date|date('m.d') }}</strong><span>{{ item.date|date('Y') }}</span></time>
+<div class="news-copy"><div class="news-meta"><span>{{ item.header.content_label|default('企业新闻')|e }}</span></div>
+{% if compact %}<h3 class="news-title">{{ item.title|e }}</h3>{% else %}<h2 class="news-title">{{ item.title|e }}</h2>{% endif %}
+{% if item.header.summary and not compact %}<p class="news-summary">{{ item.header.summary|e }}</p>{% endif %}</div>
+{% if not compact %}<span class="news-arrow" aria-hidden="true">↗</span>{% endif %}</a></li>{% endfor %}</ol></div>
+{% else %}<p class="empty">企业动态正在整理中，欢迎稍后关注。</p>{% endif %}

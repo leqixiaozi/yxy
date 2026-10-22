@@ -1,28 +1,46 @@
-/* Shared quiet orbital backgrounds for designs 02/04; no effect on other templates. */
-:is(.design-constellation,.design-nexus).is-home #main>section:not(#home){position:relative;isolation:isolate;--ambient-opacity:.46;--ambient-blue:#578ef015;--ambient-cyan:#3dd5f51c;--ambient-purple:#b27aea16}
-:is(.design-constellation,.design-nexus).is-home #main>section:not(#home)::before,
-:is(.design-constellation,.design-nexus).is-home #main>section:not(#home)::after{content:'';position:absolute;inset:28px 24px;pointer-events:none;z-index:-1;mask-image:linear-gradient(transparent,#000 12%,#000 85%,transparent);animation-play-state:paused}
-:is(.design-constellation,.design-nexus).is-home #main>section:not(#home)::before{background:url('../images/section-orbits.svg') center/cover no-repeat;opacity:var(--ambient-opacity);animation:ambient-orbit 28s ease-in-out infinite alternate paused}
-:is(.design-constellation,.design-nexus).is-home #main>section:not(#home)::after{background:radial-gradient(circle at 78% 24%,#64b6f68c 0 3px,transparent 4px),radial-gradient(circle at 88% 72%,#ae88eb80 0 4px,transparent 5px),radial-gradient(circle at 22% 78%,#6ecce96b 0 3px,transparent 4px),radial-gradient(ellipse at 87% 70%,var(--ambient-cyan),transparent 43%),radial-gradient(ellipse at 70% 28%,var(--ambient-purple),transparent 39%),radial-gradient(ellipse at 15% 80%,var(--ambient-blue),transparent 42%);animation:ambient-drift 17s ease-in-out infinite alternate paused}
-:is(.design-constellation,.design-nexus).is-home #main>section:not(#home).ambient-visible::before,
+/* Section-specific vector compositions, shared only by the two active home designs. */
+:is(.design-constellation,.design-nexus).is-home #main>section:not(#home){position:relative;isolation:isolate;--ambient-accent:#5689eb;--ambient-line:#83a6df;--ambient-secondary:#a67ee5;--ambient-blue:#578ef010;--ambient-cyan:#3dd5f518;--ambient-purple:#b27aea12;--travel-time:9s;--glow-position:85% 70%}
+:is(.design-constellation,.design-nexus).is-home #main>section:not(#home)::before{content:none}
+.section-backdrop{position:absolute;inset:24px 16px;z-index:-1;pointer-events:none;overflow:hidden;mask-image:linear-gradient(transparent,#000 12%,#000 85%,transparent)}
+.section-backdrop svg{display:block;width:100%;height:100%;overflow:hidden}
+.section-backdrop .ambient-line{stroke:var(--ambient-line);stroke-width:1;opacity:.28;vector-effect:non-scaling-stroke}
+.section-backdrop .ambient-flow{stroke:var(--ambient-accent);stroke-width:1.5;stroke-linecap:round;stroke-dasharray:3 22;opacity:.58;vector-effect:non-scaling-stroke;animation:ambient-travel var(--travel-time) linear infinite paused}
+.section-backdrop .ambient-nodes{fill:var(--ambient-accent);opacity:.38}
+.section-backdrop .ambient-signal{stroke:var(--ambient-secondary);stroke-width:1;opacity:.4;vector-effect:non-scaling-stroke;transform-box:fill-box;transform-origin:center;animation:ambient-signal 5s ease-out infinite paused}
+:is(.design-constellation,.design-nexus).is-home #main>section:not(#home)::after{content:'';position:absolute;inset:24px 16px;pointer-events:none;z-index:-1;mask-image:linear-gradient(transparent,#000 12%,#000 85%,transparent);background:radial-gradient(ellipse at var(--glow-position),var(--ambient-cyan),transparent 45%),radial-gradient(ellipse at 75% 25%,var(--ambient-purple),transparent 40%),radial-gradient(ellipse at 10% 80%,var(--ambient-blue),transparent 40%);animation:ambient-drift 16s ease-in-out infinite alternate paused}
+:is(.design-constellation,.design-nexus).is-home #main>section:not(#home).ambient-visible .ambient-flow,
+:is(.design-constellation,.design-nexus).is-home #main>section:not(#home).ambient-visible .ambient-signal,
 :is(.design-constellation,.design-nexus).is-home #main>section:not(#home).ambient-visible::after{animation-play-state:running}
-:is(.design-constellation,.design-nexus).is-home #approach::before{background-position:25% center;transform:scaleX(-1)}
-:is(.design-constellation,.design-nexus).is-home #about::before{background-position:75% center;opacity:calc(var(--ambient-opacity) * .75)}
-:is(.design-constellation,.design-nexus).is-home #qualifications::before{opacity:calc(var(--ambient-opacity) * .6)}
+:is(.design-constellation,.design-nexus).is-home #main>section#services{--travel-time:8s;--glow-position:85% 65%}
+:is(.design-constellation,.design-nexus).is-home #main>section#approach{--travel-time:10s;--glow-position:35% 80%;--ambient-purple:#b27aea09}
+:is(.design-constellation,.design-nexus).is-home #main>section#about{--travel-time:15s;--glow-position:85% 45%;--ambient-cyan:#3dd5f510}
+:is(.design-constellation,.design-nexus).is-home #main>section#qualifications{--travel-time:13s;--glow-position:15% 65%;--ambient-purple:#b27aea08}
+:is(.design-constellation,.design-nexus).is-home #qualifications .section-backdrop{opacity:.65}
+:is(.design-constellation,.design-nexus).is-home #main>section#contact{--travel-time:9s;--glow-position:65% 85%;--ambient-purple:#b27aea08}
 :is(.design-constellation,.design-nexus).is-home #contact .contact-art{display:none}
-.design-nexus.is-home #main>section:not(#home){--ambient-opacity:.32;--ambient-blue:#438aff10;--ambient-cyan:#3dd5f512;--ambient-purple:#b27aea10}
-:is(.design-constellation,.design-nexus).motion-paused #main>section::before,
+.design-nexus.is-home #main>section:not(#home){--ambient-accent:#66dfff;--ambient-line:#5979ba;--ambient-secondary:#ba8fff;--ambient-blue:#438aff0c;--ambient-cyan:#3dd5f510;--ambient-purple:#b27aea0d}
+.design-nexus .section-backdrop .ambient-flow{opacity:.42}
+/* Keep the process illustration inside the empty bottom padding, clear of all text. */
+:is(.design-constellation,.design-nexus).is-home #approach .section-backdrop{inset:auto 16px 8px;height:48px;opacity:.5;mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+:is(.design-constellation,.design-nexus).is-home #approach .section-backdrop svg{width:100%;height:100%;margin-left:0}
+:is(.design-constellation,.design-nexus).is-home #approach .ambient-nodes,
+:is(.design-constellation,.design-nexus).is-home #approach .ambient-signal{display:none}
+:is(.design-constellation,.design-nexus).is-home #main>section#approach::after{opacity:.3}
+/* Reserve a separate wave strip beneath the contact content, including wrapped addresses. */
+:is(.design-constellation,.design-nexus).is-home #main>section#contact{--contact-wave-height:64px;padding-bottom:calc(var(--contact-wave-height) + 48px)}
+:is(.design-constellation,.design-nexus).is-home #contact .section-backdrop{inset:auto 16px 16px;height:var(--contact-wave-height);opacity:.7;mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+:is(.design-constellation,.design-nexus).is-home #contact .section-backdrop svg{width:100%;height:100%;margin-left:0}
+:is(.design-constellation,.design-nexus).is-home #contact .section-backdrop circle{display:none}
+:is(.design-constellation,.design-nexus).is-home #main>section#contact::after{opacity:.4}
+:is(.design-constellation,.design-nexus).motion-paused .section-backdrop *,
+:is(.design-constellation,.design-nexus).page-hidden .section-backdrop *,
+:is(.design-constellation,.design-nexus)[data-motion="off"] .section-backdrop *,
 :is(.design-constellation,.design-nexus).motion-paused #main>section::after,
-:is(.design-constellation,.design-nexus).page-hidden #main>section::before,
 :is(.design-constellation,.design-nexus).page-hidden #main>section::after,
-:is(.design-constellation,.design-nexus)[data-motion="off"] #main>section::before,
 :is(.design-constellation,.design-nexus)[data-motion="off"] #main>section::after{animation-play-state:paused!important}
-@keyframes ambient-orbit{from{translate:-8px 6px}to{translate:8px -6px}}
-@keyframes ambient-drift{from{transform:translate(-12px,8px)}to{transform:translate(12px,-8px)}}
-@media(max-width:760px){:is(.design-constellation,.design-nexus).is-home #main>section:not(#home)::before,:is(.design-constellation,.design-nexus).is-home #main>section:not(#home)::after{inset:24px 16px}:is(.design-constellation,.design-nexus).is-home #main>section:not(#home)::before{background-size:auto 100%;opacity:calc(var(--ambient-opacity) * .65)}}
-@media(prefers-reduced-motion:reduce){:is(.design-constellation,.design-nexus).is-home #main>section::before,:is(.design-constellation,.design-nexus).is-home #main>section::after{animation:none!important}}
-
-/* Nexus keeps its own dark energy lanes instead of the constellation mesh. */
-.design-nexus.is-home #main>section:not(#home)::before{background-image:url('../images/section-energy.svg');opacity:.44;animation-duration:24s}
-.design-nexus.is-home #main>section:not(#home)::after{animation-duration:19s}
-@media(max-width:760px){.design-nexus.is-home #main>section:not(#home)::before{opacity:.3}}
+@keyframes ambient-travel{to{stroke-dashoffset:-100}}
+@keyframes ambient-signal{0%{transform:scale(.7);opacity:.5}85%,100%{transform:scale(2);opacity:0}}
+@keyframes ambient-drift{from{transform:translate(-10px,7px)}to{transform:translate(10px,-7px)}}
+@media(max-width:760px){.section-backdrop{opacity:.7}.section-backdrop svg{width:150%;max-width:none;margin-left:-25%}:is(.design-constellation,.design-nexus).is-home #qualifications .section-backdrop{opacity:.4}:is(.design-constellation,.design-nexus).is-home #approach .section-backdrop{height:36px}}
+@media(prefers-reduced-motion:reduce){.section-backdrop *,:is(.design-constellation,.design-nexus).is-home #main>section::after{animation:none!important}}
+@media(max-width:760px){:is(.design-constellation,.design-nexus).is-home #main>section#contact{--contact-wave-height:48px}}

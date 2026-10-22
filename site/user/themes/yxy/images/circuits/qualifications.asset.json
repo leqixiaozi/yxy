@@ -1,0 +1,8 @@
+{
+  "generator": "built-in image_gen",
+  "source": "C:/Users/leqix/.codex/generated_images/01a1631d-2a56-7392-9d1d-e37570833bad/exec-dea756e6-7b8f-491c-bf0d-d4dfbd715cdd.png",
+  "size": [2172, 724],
+  "mode": "RGBA",
+  "notes": "Two earlier versions with excessive glow were rejected; final is flat line artwork.",
+  "prompt": "A pure minimalist flat printed-circuit diagram, technical vector-like line art, transparent background. Wide horizontal composition about 4:1. Twelve tiny open circular solder pads arranged exactly three rows by four columns near right-center. Connect these pads with five thin muted medium-blue parallel lines running toward the left. Each line has one precise 45 degree step and terminates in a tiny open circle. Two thin short traces run from the right side of the pad array toward the right ending in small rings. Every line visibly joins its pad. The solder pads are rings, not glowing dots, and there is NO plate or fill behind them. Use only thin crisp solid blue strokes on transparent background. NO rendering, NO light, NO glow, NO blur, NO shadows, NO halos, NO gradients, NO white paint, NO dark area, NO luminous material, NO bevel, NO 3D, NO chrome, NO texture, NO background. It must resemble a clean hand-drafted PCB schematic in one muted blue ink. Leave generous empty transparent margin around the artwork. No text, labels, numbers, borders, chips, grids, honeycombs or icons. Restrained sophisticated website decorative margin artwork."
+}

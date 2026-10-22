@@ -1,5 +1,5 @@
 /* One navigation item, one flexible page area. Content is never clipped to a screen. */
-.design-constellation{--header-height:88px}
+.design-constellation{--header-height:88px;--paper:#f8fbff}
 .design-constellation .site-header{height:var(--header-height);max-width:none;background:#f8fbfff2;border-bottom:1px solid #cbd7ed80;backdrop-filter:blur(14px)}
 .design-constellation.is-home .site-header{position:fixed;left:0;transform:none;z-index:12}
 .design-constellation #main-nav{gap:clamp(14px,2.2vw,34px);font-size:14px}

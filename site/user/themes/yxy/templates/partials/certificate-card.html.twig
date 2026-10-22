@@ -1,5 +1,6 @@
+{% set certificate_static = certificate_static|default(false) %}
 {% set cover = certificate.header.preview_image ? certificate.media[certificate.header.preview_image] : certificate.media.images|first %}
-<a class="certificate-tile" href="{{ certificate.url }}{{ design_query }}">
-  {% if cover %}<figure class="certificate-picture"><img src="{{ cover.url }}" alt="{{ certificate.title|e }}证书" width="{{ cover.width }}" height="{{ cover.height }}" loading="lazy" decoding="async"></figure>{% else %}<div class="certificate-picture certificate-missing">查看证书详情</div>{% endif %}
-  <div class="certificate-caption"><h3>{{ certificate.title|e }}</h3><span>查看原件 <img class="icon" src="{{ url('theme://icons/arrow-up-right.svg') }}" alt=""></span></div>
-</a>
+{% if certificate_static %}<article class="certificate-tile">{% else %}<a class="certificate-tile" href="{{ certificate.url }}{{ design_query }}">{% endif %}
+  {% if cover %}<figure class="certificate-picture"><img src="{{ cover.url }}" alt="{{ certificate.title|e }}证书" width="{{ cover.width }}" height="{{ cover.height }}" loading="lazy" decoding="async"></figure>{% else %}<div class="certificate-picture certificate-missing">{{ certificate_static ? '证书图片待补充' : '查看证书详情' }}</div>{% endif %}
+  <div class="certificate-caption"><h3>{{ certificate.title|e }}</h3>{% if not certificate_static %}<span>查看原件 <img class="icon" src="{{ url('theme://icons/arrow-up-right.svg') }}" alt=""></span>{% endif %}</div>
+{% if certificate_static %}</article>{% else %}</a>{% endif %}

@@ -1,0 +1,8 @@
+<article class="service-panel" aria-labelledby="service-{{ loop.index0 }}-title" data-reveal>
+  <div class="service-heading"><img class="service-icon" src="{{ url('theme://icons/' ~ (loop.first ? 'stack-2' : 'hexagons') ~ '.svg') }}" alt="" width="42" height="42"><div><h3 id="service-{{ loop.index0 }}-title" class="service-title">{{ service.title|e }}</h3><p class="service-summary">{{ service.summary|e }}</p></div></div>
+  <dl class="service-facts">
+    <div><dt>服务内容</dt><dd>{{ service.scope|e }}</dd></div>
+    <div><dt>交付安排</dt><dd>{{ service.delivery|e }}</dd></div>
+    <div><dt>合作边界</dt><dd>{{ service.boundary|e }}</dd></div>
+  </dl>
+</article>

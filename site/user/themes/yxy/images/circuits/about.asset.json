@@ -1,0 +1,8 @@
+{
+  "generator": "built-in image_gen",
+  "reference": "exec-ed279a2e-111d-40fb-9eea-905cf5a82c5a.png panel 03",
+  "source": "C:/Users/leqix/.codex/generated_images/01a1631d-2a56-7392-9d1d-e37570833bad/exec-72a719cf-249b-4999-bf14-58f260e97c61.png",
+  "size": [2172, 724],
+  "mode": "RGBA",
+  "prompt": "Create a single standalone decorative circuit illustration asset for a refined technology company website. Use ONLY the connector/bus motif from panel 03 of the reference board as style guidance, NOT any layout, text, panels, logo, or background. Output a genuinely transparent PNG, very wide banner aspect ratio about 4:1, ideally 1536x384. Leave at least 8 percent empty transparent padding around the entire drawing so no stroke or endpoint is cropped. A small vertical five-contact interface connector near the left quarter, each contact attached seamlessly to its own very fine parallel conductor trace. Traces bend through precise 45-degree corners and fan toward the lower right into small circular terminal pads at staggered lengths. One tiny subtle ground symbol near the connector. This is a connector, not a microchip. All wires physically meet the terminals without gaps. Sophisticated flat 2D engineering line illustration with consistent thin strokes, delicate pale blue auxiliary traces and restrained cobalt blue and cyan highlights. A little depth on the connector is acceptable but no heavy 3D rendering. No large glows, no neon haze, no big solid filled areas, no shadows, no checkerboard baked into image. No text, letters, numbers, user interface, border or background. Keep the entire connected circuit low-density, clean, elegant and suitable for placement in an empty margin below paragraph text."
+}

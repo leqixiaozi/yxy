@@ -1,11 +1,12 @@
 {% extends 'partials/base.html.twig' %}
 {% block content %}
 <div class="content-shell wrap"><a class="text-link back" href="{{ page.parent.url }}{{ design_query }}">返回{{ page.parent.title|e }}</a>
-<article><div class="eyebrow">{{ page.header.content_label|default(page.parent.title)|e }}</div>
+<article class="article-{{ page.template|e('html_attr') }}"><div class="eyebrow">{{ page.header.content_label|default(page.parent.title)|e }}</div>
 <h1>{{ page.title|e }}</h1>
 {% if page.header.summary %}<p class="lead">{{ page.header.summary|e }}</p>{% endif %}
 {% block facts %}{% endblock %}
-{% set cover = page.header.original_image ? page.media[page.header.original_image] : page.media.images|first %}{% if cover %}<figure>{% if focused_design and page.template == 'certificate' %}<a href="{{ cover.url }}" target="_blank" rel="noopener" aria-label="打开完整证书原图">{% endif %}<img class="article-image" src="{{ cover.url }}" alt="{{ page.title|e }}">{% if focused_design and page.template == 'certificate' %}</a>{% endif %}</figure>{% endif %}
+{% block media %}{% set cover = page.header.original_image ? page.media[page.header.original_image] : page.media.images|first %}{% if cover %}<figure>{% if focused_design and page.template == 'certificate' %}<a href="{{ cover.url }}" target="_blank" rel="noopener" aria-label="打开完整证书原图">{% endif %}<img class="article-image" src="{{ cover.url }}" alt="{{ page.title|e }}">{% if focused_design and page.template == 'certificate' %}</a>{% endif %}</figure>{% endif %}{% endblock %}
+{% block after_media %}{% endblock %}
 <div class="prose">{{ page.content|raw }}</div>
 {% for media in page.media.files %}{% if media.extension == 'pdf' %}<p><a href="{{ media.url }}" target="_blank" rel="noopener">查看 PDF 附件：{{ media.filename|e }}</a></p>{% endif %}{% endfor %}
 </article></div>

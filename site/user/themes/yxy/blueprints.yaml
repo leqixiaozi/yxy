@@ -41,6 +41,48 @@ form:
         0: 隐藏
       validate:
         type: bool
+    modules_section:
+      type: section
+      title: 可选栏目开关（全站）
+      underline: true
+      text: 关闭后隐藏首页与导航，列表和详情返回404；内容保留在后台。默认仅展示正式发布内容，也可打开下方演示预览。Cloudflare静态分享需重新导出发布后才更新。
+    module_news_enabled:
+      type: toggle
+      label: 开启企业新闻
+      default: 0
+      options:
+        1: 开启
+        0: 完全关闭
+      validate:
+        type: bool
+    module_products_enabled:
+      type: toggle
+      label: 开启产品库
+      default: 0
+      options:
+        1: 开启
+        0: 完全关闭
+      validate:
+        type: bool
+    module_cases_enabled:
+      type: toggle
+      label: 开启客户案例
+      default: 0
+      options:
+        1: 开启
+        0: 完全关闭
+      validate:
+        type: bool
+    module_sample_preview:
+      type: toggle
+      label: 显示栏目演示样例
+      help: 用于查看新闻和产品库的样例内容。前台按正式效果显示，样例属性保留在后台；关闭后隐藏并拦截详情，静态导出自动排除样例。
+      default: 0
+      options:
+        1: 预览演示
+        0: 仅正式内容
+      validate:
+        type: bool
     footer_section:
       type: section
       title: 页脚与备案（仅方案02/04）

@@ -18,14 +18,19 @@ form:
               type: text
               label: 发布人
               default: 屹鑫元
+            header.content_label:
+              type: text
+              label: 新闻分类
+              help: 例如公司动态、技术分享、团队活动、行业交流、产品动态。
             content:
               label: 新闻正文
             header.media_order:
               label: 新闻配图
+              help: 可留空。首页及新闻列表以文字展示，配图仅在详情中展示。
             header.demo:
               type: toggle
               label: 仅作为本地演示
-              help: 演示记录保留在后台，但不会进入官网列表、首页推荐及导航。
+              help: 默认不对外展示；带样例标记的记录可通过主题中的演示预览开关查看，静态导出始终排除。
               default: 0
               options:
                 1: 是

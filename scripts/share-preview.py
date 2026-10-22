@@ -32,7 +32,7 @@ class References(HTMLParser):
                 self.urls.append(value)
 
 
-def export():
+def export(include_samples=False):
     OUTPUT.mkdir(parents=True, exist_ok=True)
     manifest = {}
     queue = ['/?design=' + design for design in DESIGNS]
@@ -52,7 +52,10 @@ def export():
         if key in seen:
             continue
         seen.add(key)
-        with urlopen(ORIGIN + quote(path, safe='/') + ('?' + parts.query if parts.query else ''), timeout=30) as response:
+        request_query = parts.query
+        if is_page and not include_samples:
+            request_query += ('&' if request_query else '') + 'demo_preview=off'
+        with urlopen(ORIGIN + quote(path, safe='/') + ('?' + request_query if request_query else ''), timeout=30) as response:
             data = response.read()
             content_type = response.headers.get('Content-Type', mimetypes.guess_type(path)[0] or 'application/octet-stream')
         references = []
@@ -74,7 +77,7 @@ def export():
             suffix = Path(ref_path).suffix.lower()
             if suffix in ('.css', '.js', '.svg', '.webp', '.png', '.jpg', '.jpeg', '.woff2', '.pdf', '.ico'):
                 queue.append(resolved.path + ('?' + resolved.query if resolved.query else ''))
-            elif not suffix and (ref_path == '/' or ref_path.startswith(('/qualifications', '/news', '/cases'))):
+            elif not suffix and (ref_path == '/' or ref_path.startswith(('/qualifications', '/news', '/cases', '/products'))):
                 ref_design = parse_qs(resolved.query).get('design', [design])[0]
                 if ref_design in DESIGNS:
                     queue.append(resolved.path + '?' + urlencode({'design': ref_design}))
@@ -82,7 +85,9 @@ def export():
         (OUTPUT / filename).write_bytes(data)
         manifest[key] = {'file': filename, 'type': content_type, 'bytes': len(data)}
     (OUTPUT / 'manifest.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding='utf-8')
-    print(json.dumps({'pages': sum('?design=' in key for key in manifest), 'resources': sum('?design=' not in key for key in manifest), 'bytes': sum(item['bytes'] for item in manifest.values())}))
+    result = {'pages': sum('?design=' in key for key in manifest), 'resources': sum('?design=' not in key for key in manifest), 'bytes': sum(item['bytes'] for item in manifest.values()), 'include_samples': include_samples}
+    (OUTPUT / 'export-info.json').write_text(json.dumps(result), encoding='utf-8')
+    print(json.dumps(result))
 
 
 def serve(port):
@@ -178,7 +183,9 @@ def package_pages():
         for file in destination.rglob('*'):
             if file.is_file():
                 package.write(file, file.relative_to(destination).as_posix())
-    result = {'directory': str(destination), 'archive': str(archive), 'routes': ['/02/', '/04/'], 'files': sum(file.is_file() for file in destination.rglob('*'))}
+    export_info = OUTPUT / 'export-info.json'
+    include_samples = json.loads(export_info.read_text(encoding='utf-8')).get('include_samples', False) if export_info.exists() else False
+    result = {'directory': str(destination), 'archive': str(archive), 'routes': ['/02/', '/04/'], 'files': sum(file.is_file() for file in destination.rglob('*')), 'include_samples': include_samples}
     (ROOT / '.local' / 'pages-package.json').write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding='utf-8')
     print(json.dumps(result, ensure_ascii=False))
 
@@ -187,9 +194,12 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('action', choices=('export', 'serve', 'package-pages'))
     parser.add_argument('--port', type=int, default=8100)
+    parser.add_argument('--include-samples', action='store_true', help='Include currently visible preview samples; opt in only for an approved public preview')
     arguments = parser.parse_args()
+    if arguments.include_samples and arguments.action != 'export':
+        parser.error('--include-samples applies only to export')
     if arguments.action == 'export':
-        export()
+        export(include_samples=arguments.include_samples)
     elif arguments.action == 'package-pages':
         package_pages()
     else:

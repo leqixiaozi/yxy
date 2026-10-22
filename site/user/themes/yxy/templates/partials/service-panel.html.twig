@@ -1,0 +1,4 @@
+<article class="service-panel" data-service="{{ loop.index0 }}" aria-labelledby="service-{{ loop.index0 }}-title" data-reveal>
+  <div class="service-heading"><img class="service-icon" src="{{ url('theme://icons/' ~ (loop.first ? 'stack-2' : 'hexagons') ~ '.svg') }}" alt="" width="42" height="42"><div><h3 id="service-{{ loop.index0 }}-title" class="service-title">{{ service.title|e }}</h3><p class="service-summary">{{ service.summary|e }}</p></div></div>
+  <div class="service-detail"><p>{{ service.description|e }}</p></div>
+</article>

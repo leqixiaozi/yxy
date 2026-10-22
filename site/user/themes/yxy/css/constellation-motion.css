@@ -1,0 +1,27 @@
+/* Shared selected motion for designs 02 and 04; base content remains visible without JS. */
+:is(.design-constellation,.design-nexus).is-home .module-entry{opacity:0;transform:translateY(26px)}
+:is(.design-constellation,.design-nexus).is-home .module-entry.module-entered{animation:module-stagger-in .7s cubic-bezier(.2,.7,.2,1) var(--module-delay,0ms) both}
+:is(.design-constellation,.design-nexus).is-home .module-entry:focus-within{opacity:1;transform:none;animation:none}
+@keyframes module-stagger-in{to{opacity:1;transform:none}}
+:is(.design-constellation,.design-nexus).is-home .news-motion-ready .news-list>li{opacity:0;transform:translateY(22px)}
+:is(.design-constellation,.design-nexus).is-home .news-motion-ready .news-list>li.news-entered{animation:news-stagger-in .65s cubic-bezier(.2,.7,.2,1) var(--news-delay,0ms) both}
+:is(.design-constellation,.design-nexus).is-home .news-motion-ready .news-list>li:focus-within{opacity:1;transform:none;animation:none}
+@keyframes news-stagger-in{to{opacity:1;transform:none}}
+:is(.design-constellation,.design-nexus).is-home #main>section .circuit-device{animation:chip-breathe 3.8s ease-in-out infinite paused;transform-box:fill-box;transform-origin:center}
+:is(.design-constellation,.design-nexus).is-home #main>section .circuit-core{animation:chip-core-light 3.8s ease-in-out infinite paused}
+:is(.design-constellation,.design-nexus).is-home #main>section.ambient-visible :is(.circuit-device,.circuit-core){animation-play-state:running}
+@keyframes chip-breathe{0%,100%{filter:drop-shadow(0 0 0 #2e91ff00);stroke-opacity:.65}50%{filter:drop-shadow(0 0 13px #208effaa);stroke-opacity:1}}
+@keyframes chip-core-light{0%,100%{fill-opacity:.45}50%{fill-opacity:1}}
+:is(.design-constellation,.design-nexus).is-home #main>section>.section-transition-layer,:is(.design-constellation,.design-nexus).is-home #main>section>.section-spotlight{position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:0}
+:is(.design-constellation,.design-nexus).is-home #main>section>.section-transition-layer{background:linear-gradient(112deg,transparent 10%,var(--motion-arrive-core,#51bbf51c) 42%,var(--motion-arrive-edge,#8888f415) 58%,transparent 88%)}
+:is(.design-constellation,.design-nexus).is-home #main>section.section-current>.section-transition-layer{animation:section-light-arrive 1.15s ease-out both}
+@keyframes section-light-arrive{0%{opacity:0;transform:translateY(28px)}35%{opacity:1}100%{opacity:0;transform:none}}
+:is(.design-constellation,.design-nexus).is-home #main>section>.section-spotlight{background:radial-gradient(circle 240px at var(--spotlight-x,50%) var(--spotlight-y,50%),var(--motion-spot-core,#2898ff17),var(--motion-spot-edge,#59d6ed0a) 45%,transparent 75%);transition:opacity .3s}
+@media(hover:hover) and (pointer:fine){:is(.design-constellation,.design-nexus).is-home #main>section.spotlight-active>.section-spotlight{opacity:1}}
+:is(.design-constellation,.design-nexus).is-home:is(.motion-paused,.page-hidden,[data-motion="off"]) :is(.circuit-device,.circuit-core,.section-transition-layer){animation-play-state:paused!important}
+:is(.design-constellation,.design-nexus).is-home:is(.motion-paused,[data-motion="off"]) .news-motion-ready .news-list>li{animation:none!important;opacity:1;transform:none}
+:is(.design-constellation,.design-nexus).is-home.page-hidden .news-motion-ready .news-list>li{animation-play-state:paused!important}
+:is(.design-constellation,.design-nexus).is-home:is(.motion-paused,[data-motion="off"]) .module-entry{animation:none!important;opacity:1;transform:none}
+:is(.design-constellation,.design-nexus).is-home.page-hidden .module-entry{animation-play-state:paused!important}
+:is(.design-constellation,.design-nexus).is-home:is(.motion-paused,.page-hidden,[data-motion="off"]) #main>section>.section-spotlight{opacity:0;transition:none}
+@media(prefers-reduced-motion:reduce){:is(.design-constellation,.design-nexus).is-home :is(.circuit-device,.circuit-core,.section-transition-layer){animation:none!important}:is(.design-constellation,.design-nexus).is-home .news-motion-ready .news-list>li,:is(.design-constellation,.design-nexus).is-home .module-entry{animation:none!important;opacity:1;transform:none}:is(.design-constellation,.design-nexus).is-home #main>section>.section-spotlight{display:none}}

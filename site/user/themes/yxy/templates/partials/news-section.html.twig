@@ -1,0 +1,5 @@
+<section id="news" class="news-section section wrap" aria-labelledby="news-title">
+{% if focused_design %}{% include 'partials/section-backdrop.html.twig' with {'area':'news'} %}{% endif %}
+<div class="news-layout"><div class="news-intro"><p class="eyebrow">NEWS & INSIGHTS</p><h2 id="news-title">企业新闻</h2><a class="text-link news-all" href="{{ base_url_relative }}/news{{ design_query }}">查看全部动态</a></div>
+<div class="news-feed-wrap">{% include 'partials/news-feed.html.twig' with {'news_items':official_news,'compact':true} %}</div></div>
+</section>

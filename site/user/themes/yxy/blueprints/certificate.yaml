@@ -18,6 +18,18 @@ form:
               options:
                 government: 企业资质
                 credit: 第三方信用评价
+                intellectual_property: 知识产权
+            header.ip_type:
+              type: select
+              label: 知识产权类型
+              help: 按证书实际类型选择；软件著作权不能填写为专利。
+              options:
+                software_copyright: 软件著作权
+                patent: 专利
+            header.strip_image:
+              type: text
+              label: 滚动展示缩略图文件名
+              help: 可选；优先使用小尺寸WebP，留空时使用列表预览图。
             header.show_in_designs:
               type: select
               multiple: true
@@ -53,7 +65,7 @@ form:
               label: 证书图片与附件
             header.certificate_number:
               type: text
-              label: 证书编号
+              label: 证书编号 / 登记号
         options:
           title: 发布设置
         advanced:

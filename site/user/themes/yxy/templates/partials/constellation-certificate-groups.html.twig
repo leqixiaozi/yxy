@@ -1,0 +1,18 @@
+{% set groups = [{'title':'信用评价','items':credit_certificates},{'title':'知识产权','items':ip_certificates}] %}
+<div class="certificate-groups">
+{% for group in groups %}{% if group.items|length %}
+<section class="certificate-showcase" aria-label="{{ group.title|e }}展示">
+  <div class="certificate-showcase-heading"><h3>{{ group.title|e }}</h3></div>
+  <div class="certificate-rail" tabindex="0" role="group" aria-label="{{ group.title|e }}，可左右滚动" aria-live="off">
+  {% for certificate in group.items %}
+    {% set thumbnail = certificate.header.strip_image ? certificate.media[certificate.header.strip_image] : (certificate.header.preview_image ? certificate.media[certificate.header.preview_image] : certificate.media.images|first) %}
+    <a class="certificate-rail-item" href="{{ certificate.url }}{{ design_query }}" draggable="false">
+      {% if thumbnail %}<figure><img src="{{ thumbnail.url }}" alt="{{ certificate.title|e }}证书" width="{{ thumbnail.width }}" height="{{ thumbnail.height }}" loading="lazy" decoding="async" draggable="false"></figure>{% endif %}
+      <span class="certificate-rail-kind">{{ certificate.header.certificate_category == 'credit' ? '信用评价' : (certificate.header.ip_type == 'software_copyright' ? '软件著作权' : '知识产权') }}</span>
+      <span class="certificate-rail-name">{{ certificate.title|e }}</span>
+    </a>
+  {% endfor %}
+  </div>
+</section>
+{% endif %}{% endfor %}
+</div>

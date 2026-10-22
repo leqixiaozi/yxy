@@ -1,0 +1,30 @@
+/* Progressive text effects use the existing local fonts and retain a full accessible heading. */
+.motion-heading{--title-a:#2748df;--title-b:#117caa;--title-c:#8140c5}
+.design-nexus .motion-heading{--title-a:#74e5ff;--title-b:#6faaff;--title-c:#bc96ff}
+.title-visual,.title-line{display:block}
+.title-line{transform-origin:left center}
+.title-char{display:inline-block;white-space:pre}
+.title-word{display:inline-block;white-space:nowrap;position:relative;color:var(--title-a)}
+.motion-heading[data-title-effect="slide"].title-active .title-line{animation:title-slide .75s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--title-line) * .16s)}
+.motion-heading[data-title-effect="cascade"].title-active .title-char{animation:title-cascade .65s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--title-index) * .032s)}
+.motion-heading[data-title-effect="focus"].title-active .title-line{animation:title-focus .9s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--title-line) * .18s)}
+.motion-heading[data-title-effect="underline"].title-active .title-line{animation:title-clear .7s ease-out both;animation-delay:calc(var(--title-line) * .16s)}
+.motion-heading[data-title-effect="welcome"].title-active .title-char{animation:title-welcome .75s ease-out both;animation-delay:calc(var(--title-index) * .025s)}
+/* Clip on each animated glyph: a clipped parent loses transformed child text in Chromium. */
+@supports(background-clip:text){
+  .motion-heading:is([data-title-effect="cascade"],[data-title-effect="focus"],[data-title-effect="welcome"]) .title-word .title-char{background:linear-gradient(110deg,var(--title-a),var(--title-b) 35%,var(--title-c) 65%,var(--title-a));background-size:240% 100%;background-clip:text;-webkit-text-fill-color:transparent}
+  .motion-heading[data-title-effect="cascade"].title-active .title-word .title-char{animation:title-cascade .65s cubic-bezier(.2,.7,.2,1) calc(var(--title-index) * .032s) 1 both,title-sheen 7s linear infinite}
+  .motion-heading[data-title-effect="focus"].title-active .title-word .title-char{animation:title-sheen 7s linear infinite}
+  .motion-heading[data-title-effect="welcome"].title-active .title-word .title-char{animation:title-welcome .75s ease-out calc(var(--title-index) * .025s) 1 both,title-sheen 7s linear infinite}
+}
+.motion-heading[data-title-effect="underline"] .title-word::after{content:'';position:absolute;left:0;right:0;bottom:.03em;height:2px;background:linear-gradient(90deg,var(--title-a),var(--title-c));opacity:.65;transform-origin:left}
+.motion-heading[data-title-effect="underline"].title-active .title-word::after{animation:title-underline 1s ease-out .25s both}
+body.page-hidden .motion-heading *,body.page-hidden .motion-heading *::after{animation-play-state:paused!important}
+@keyframes title-slide{from{transform:translateX(12px);opacity:.65}to{transform:translateX(0);opacity:1}}
+@keyframes title-cascade{from{transform:translateY(.32em) rotate(2deg);opacity:.55}to{transform:none;opacity:1}}
+@keyframes title-focus{from{transform:translateY(.16em) scale(.985);opacity:.65}to{transform:none;opacity:1}}
+@keyframes title-clear{from{transform:translateY(5px);opacity:.65}to{transform:none;opacity:1}}
+@keyframes title-welcome{from{transform:translateY(.16em);opacity:.6}to{transform:none;opacity:1}}
+@keyframes title-sheen{from{background-position:0% 50%}to{background-position:200% 50%}}
+@keyframes title-underline{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@media(prefers-reduced-motion:reduce){.motion-heading *,.motion-heading *::after{animation:none!important;transform:none!important;opacity:1!important}}

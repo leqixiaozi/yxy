@@ -1,0 +1,12 @@
+{
+  "tool": "built-in image_gen",
+  "status": "local scheme 02 preview, not externally deployed",
+  "original_file": "C:\\Users\\leqix\\.codex\\generated_images\\01a15c3a-4f05-70b1-8b22-be82d2bcdb4b\\exec-24818c12-18bb-406c-8f2e-75c6ba04a7c7.png",
+  "original_sha256": "e0a63ff31b434104803c919d49bafea564b36d8b242edc349f110ef5cdb51dec",
+  "web_asset": "site\\user\\themes\\yxy\\images\\services-corner-glass.webp",
+  "web_sha256": "77179a92d70a42e81fedcc08c6cbb58e855765f078c587b57073580cec119cfc",
+  "web_bytes": 4488,
+  "processing": "proportional thumbnail <=1280x1000; WebP quality78 method6; original retained",
+  "usage": "Only the bottom 80px/64px strip of the service section; no decoration behind reading areas",
+  "prompt": "Use case: stylized-concept. Asset type: a preview-only background plate for the TECHNOLOGY SERVICES section of a Chinese enterprise software company's website, not a screenshot and not a finished webpage. Generate one premium minimalist landscape background, aspect ratio 16:10. Main request: restrained international software engineering aesthetic, avoiding interference with two columns of website text that will be layered on later. Base field almost white with a very slight ice-blue tint (#f8fbff). Keep the entire central rectangle x=10%-90%, y=12%-87% practically uniform clean white, absolutely no line art, nodes, dots, meshes, objects, or texture there. Place two small elegant peripheral abstract compositions only: a cropped translucent frosted-glass layered wafer at the extreme lower-left corner within outer 8% of canvas width and bottom 12% height, and a cropped fine translucent folded ribbon / bevel at the extreme upper-right edge within outer 8% width and top 10% height. They have quiet cyan, cobalt-blue and a tiny lavender edge refraction, very soft shadows, extremely low saturation, lots of white breathing space. No elements stretching across the canvas. Abstract polished glass meets precision software architecture, tasteful editorial restraint, not sci-fi wallpaper. No text, no logo, no company name, no watermark, no icons, no buttons, no borders, no UI, no constellation networks, no glowing balls, no diagonal wires through the middle, no dense circuit boards. The purpose is a calm readable section background; decorative detail must stay at the outer corners. This is a static proposal image for discussion."
+}
