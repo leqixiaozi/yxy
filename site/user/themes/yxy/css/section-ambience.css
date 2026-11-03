@@ -44,3 +44,9 @@
 @media(max-width:760px){.section-backdrop{opacity:.7}.section-backdrop svg{width:150%;max-width:none;margin-left:-25%}:is(.design-constellation,.design-nexus).is-home #qualifications .section-backdrop{opacity:.4}:is(.design-constellation,.design-nexus).is-home #approach .section-backdrop{height:36px}}
 @media(prefers-reduced-motion:reduce){.section-backdrop *,:is(.design-constellation,.design-nexus).is-home #main>section::after{animation:none!important}}
 @media(max-width:760px){:is(.design-constellation,.design-nexus).is-home #main>section#contact{--contact-wave-height:48px}}
+
+/* Contact details belong to the final About section in the active designs. */
+:is(.design-constellation,.design-nexus) .about-contact{grid-column:1/-1;border-top:1px solid var(--line);padding-top:36px;scroll-margin-top:100px}
+:is(.design-constellation,.design-nexus) .about-contact>h3{font-size:clamp(24px,3vw,36px);line-height:1.4}
+:is(.design-constellation,.design-nexus) .about-contact .contact-details{margin-top:28px}
+:is(.design-constellation,.design-nexus) .about-contact .text-link{margin-top:0}
