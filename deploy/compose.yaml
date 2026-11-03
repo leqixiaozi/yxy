@@ -1,0 +1,42 @@
+name: yxy
+services:
+  php:
+    image: yxy-php:8.4.27
+    pull_policy: never
+    restart: unless-stopped
+    mem_limit: 512m
+    cpus: 1.0
+    pids_limit: 128
+    volumes:
+      - ./site:/var/www/html
+      - ./php.ini:/usr/local/etc/php/conf.d/zz-yxy.ini:ro
+      - ./fpm.conf:/usr/local/etc/php-fpm.d/zz-yxy.conf:ro
+    networks: [backend]
+    logging:
+      driver: json-file
+      options: {max-size: 5m, max-file: '2'}
+  web:
+    image: yxy-nginx:20261026
+    pull_policy: never
+    restart: unless-stopped
+    mem_limit: 64m
+    cpus: 0.5
+    pids_limit: 64
+    depends_on: [php]
+    volumes:
+      - ./site:/var/www/html:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    ports:
+      - 127.0.0.1:8088:80
+    networks:
+      backend:
+      edge:
+        aliases: [yxy-web]
+    logging:
+      driver: json-file
+      options: {max-size: 5m, max-file: '2'}
+networks:
+  backend:
+  edge:
+    external: true
+    name: nginx-proxy-manage_default
