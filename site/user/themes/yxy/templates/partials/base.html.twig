@@ -34,12 +34,12 @@
 <a class="skip-link" href="#main">跳到正文</a>
 <header class="site-header wrap"><a class="brand" href="{{ section_home ? '#home' : home_url }}" aria-label="{{ focused_design ? '屹鑫元科技' : '屹鑫元' }} 首页"><img src="{{ url('theme://images/logo.webp') }}" alt="" width="62" height="44"><span>{{ focused_design ? '屹鑫元科技' : '屹鑫元' }}<small>{{ focused_design ? 'YIXINYUAN TECHNOLOGY' : 'YIXINYUAN' }}</small></span></a>
 <button class="menu-toggle" type="button" aria-controls="main-nav" aria-expanded="false">菜单 <img src="{{ url('theme://icons/menu-2.svg') }}" alt="" width="22" height="22"></button>
-<nav id="main-nav" aria-label="主要导航">{% if focused_design %}<a href="{{ section_base }}#home">首页</a>{% endif %}<a href="{{ section_base }}#services">{{ services_label|e }}</a><a href="{{ section_base }}#approach">{{ approach_label|e }}</a><a href="{{ section_base }}#about">关于我们</a>
+<nav id="main-nav" aria-label="主要导航">{% if focused_design %}<a href="{{ section_base }}#home">首页</a>{% endif %}<a href="{{ section_base }}#services">{{ services_label|e }}</a><a href="{{ section_base }}#approach">{{ approach_label|e }}</a>
 {% if focused_design %}<a href="{{ section_base }}#qualifications">企业资质</a>{% endif %}
 {% if official_products|length %}<a href="{{ focused_design ? section_base ~ '#products' : base_url_relative ~ '/products' ~ design_query }}">产品库</a>{% endif %}
 {% if official_cases|length %}<a href="{{ focused_design ? section_base ~ '#cases' : base_url_relative ~ '/cases' ~ design_query }}">客户案例</a>{% endif %}
 {% if official_news|length %}<a href="{{ focused_design ? section_base ~ '#news' : base_url_relative ~ '/news' ~ design_query }}">企业新闻</a>{% endif %}
-<a class="button nav-cta" href="{{ section_base }}#contact">{{ focused_design ? '联系我们' : '开始对话' }} <img class="icon" src="{{ url('theme://icons/arrow-up-right.svg') }}" alt=""></a></nav></header>
+<a href="{{ section_base }}#about">关于我们</a></nav></header>
 <main id="main">{% block content %}{% endblock %}</main>
 {% if focused_design %}{% include 'partials/company-footer.html.twig' %}{% else %}<footer class="site-footer wrap"><span>{{ site.title|e }}</span><div><a href="{{ base_url_relative }}/qualifications{{ design_query }}">企业资质</a><span>YIXINYUAN / SOFTWARE & TECHNOLOGY</span></div></footer>{% endif %}
 {% if config.themes.yxy.preview_switcher is not same as(false) %}<aside class="preview-tools" aria-label="模板预览工具"><details><summary>切换方案 · {{ design == 'flow' ? '01' : (design == 'constellation' ? '02' : (design == 'studio' ? '03' : '04')) }}</summary><div class="design-options">{% for key, label in designs %}<a href="{{ page.url }}?design={{ key }}" {% if design == key %}aria-current="true"{% endif %}>{{ label }}</a>{% endfor %}<button class="motion-toggle" type="button" aria-pressed="false">暂停动效</button></div></details></aside>{% endif %}
