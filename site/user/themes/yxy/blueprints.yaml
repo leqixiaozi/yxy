@@ -49,7 +49,7 @@ form:
     module_news_enabled:
       type: toggle
       label: 开启企业新闻
-      default: 0
+      default: 1
       options:
         1: 开启
         0: 完全关闭
@@ -58,7 +58,7 @@ form:
     module_products_enabled:
       type: toggle
       label: 开启产品库
-      default: 0
+      default: 1
       options:
         1: 开启
         0: 完全关闭
@@ -91,6 +91,7 @@ form:
     footer_icp_number:
       type: text
       label: ICP备案号
+      default: '粤ICP备2026171580号'
       help: 填写备案平台核发的完整编号。
     footer_icp_url:
       type: text

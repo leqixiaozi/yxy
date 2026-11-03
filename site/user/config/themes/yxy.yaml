@@ -1,6 +1,8 @@
-module_news_enabled: true
-module_products_enabled: true
-module_cases_enabled: true
-module_sample_preview: true
 default_design: constellation
 preview_switcher: false
+module_news_enabled: true
+module_products_enabled: true
+footer_icp_number: '粤ICP备2026171580号'
+footer_icp_url: 'https://beian.miit.gov.cn/'
+module_cases_enabled: true
+module_sample_preview: true
