@@ -2,8 +2,8 @@ param([string]$ArchivePath)
 $ErrorActionPreference = 'Stop'
 $projectRoot = Split-Path $PSScriptRoot -Parent
 $siteRoot = Join-Path $projectRoot 'site'
-$version = '2.2.11'
-$expectedHash = 'BC3693CEFC95C05A034B31BBC2A85C9D1F938C6B378E1A7D497CC6F3F2AC5FD2'
+$version = '2.2.22'
+$expectedHash = '51339A524B7D1065DE45A695B19CDE4BCFE36629DF6EB125DA39EAA4EC77E0BF'
 if (Test-Path -LiteralPath "$siteRoot\vendor\autoload.php") {
     Write-Output 'Grav runtime already exists; current installation and content preserved.'
     return
@@ -13,10 +13,10 @@ if (!(Test-Path -LiteralPath $ArchivePath)) {
     New-Item -ItemType Directory -Path (Split-Path $ArchivePath -Parent) -Force | Out-Null
     Invoke-WebRequest -Uri "https://getgrav.org/download/core/grav-admin/$version" -OutFile $ArchivePath -TimeoutSec 180
 }
-# Reproduce the exact official archive used during local validation.
-# This is our recorded download digest, not an upstream-signed checksum.
+# Pin the SHA-256 published for the official grav-admin release asset.
+# Existing installations and their plugins are upgraded separately.
 if ((Get-FileHash -LiteralPath $ArchivePath -Algorithm SHA256).Hash -ne $expectedHash) {
-    throw 'Archive differs from the evaluated package. Inspect before replacing the runtime.'
+    throw 'Archive differs from the pinned official release. Inspect before replacing the runtime.'
 }
 $localDir = Join-Path $projectRoot '.local'
 New-Item -ItemType Directory -Path $localDir -Force | Out-Null
