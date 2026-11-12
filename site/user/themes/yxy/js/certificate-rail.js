@@ -3,7 +3,21 @@
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   document.querySelectorAll('.certificate-showcase').forEach(showcase => {
     const rail = showcase.querySelector('.certificate-rail');
-    let hovering = false, pressed = false, inView = false;
+    const looping = showcase.dataset.loop === 'true' && rail.children.length > 1;
+    const originals = [...rail.children];
+    let loopStart = null, loopWidth = 0;
+    if (looping) {
+      originals.forEach(item => {
+        const clone = item.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        // Keep duplicated detail links clickable, but out of the keyboard order.
+        if (clone.matches('a,button,[tabindex]')) clone.tabIndex = -1;
+        clone.querySelectorAll('a,button,[tabindex]').forEach(element => { element.tabIndex = -1; });
+        rail.append(clone);
+        if (!loopStart) loopStart = clone;
+      });
+    }
+    let hovering = false, pressed = false, inView = !('IntersectionObserver' in window);
     let request = 0, previous = 0, position = rail.scrollLeft, direction = 1, frames = 0;
     let idleUntil = 0, idleTimer = 0, drag = null, blockClickUntil = 0;
     const blocked = () => reduced.matches || document.hidden || document.body.dataset.motion === 'off' || document.body.classList.contains('motion-paused');
@@ -11,6 +25,7 @@
     const maxScroll = () => Math.max(0, rail.scrollWidth - rail.clientWidth);
     function stop() { cancelAnimationFrame(request); request = 0; previous = 0; }
     function sync() {
+      if (looping) loopWidth = loopStart.getBoundingClientRect().left - originals[0].getBoundingClientRect().left;
       const disabled = blocked();
       const state = disabled ? 'paused' : (!inView ? 'offscreen' : (held() ? 'held' : (maxScroll() > 1 ? 'running' : 'static')));
       rail.dataset.playState = state;
@@ -26,8 +41,14 @@
         const limit = maxScroll();
         const speed = matchMedia('(max-width:760px)').matches ? 22 : 26;
         position += direction * Math.min(elapsed, 100) / 1000 * speed;
-        if (position >= limit) { position = limit; direction = -1; }
-        if (position <= 0) { position = 0; direction = 1; }
+        if (looping && loopWidth > 0) {
+          // The duplicate sequence starts at exactly the same visual position.
+          // Wrap by one sequence width, always continuing from right to left.
+          position = ((position % loopWidth) + loopWidth) % loopWidth;
+        } else {
+          if (position >= limit) { position = limit; direction = -1; }
+          if (position <= 0) { position = 0; direction = 1; }
+        }
         rail.scrollLeft = position;
         previous = now;
         rail.dataset.frames = String(++frames);
@@ -49,7 +70,8 @@
     rail.addEventListener('keydown', event => {
       if (event.key !== 'Home' && event.key !== 'End') return;
       event.preventDefault();
-      rail.scrollTo({left:event.key === 'Home' ? 0 : maxScroll(),behavior:reduced.matches ? 'instant' : 'smooth'});
+      const end = looping ? Math.max(0, loopWidth - parseFloat(getComputedStyle(rail).columnGap) - rail.clientWidth) : maxScroll();
+      rail.scrollTo({left:event.key === 'Home' ? 0 : end,behavior:reduced.matches ? 'instant' : 'smooth'});
       rest();
     });
     rail.addEventListener('pointerdown', event => {
@@ -58,6 +80,7 @@
       drag = event.pointerType === 'mouse' ? {id:event.pointerId,x:event.clientX,left:rail.scrollLeft,moved:false} : null;
       sync();
     });
+    if (looping) rail.addEventListener('dragstart', event => event.preventDefault());
     rail.addEventListener('pointermove', event => {
       if (!drag || drag.id !== event.pointerId) return;
       const delta = event.clientX - drag.x;

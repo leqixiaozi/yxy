@@ -31,3 +31,4 @@ __pycache__/
 /site/user/pages/**/*.png
 /site/user/pages/**/*.webp
 /site/user/pages/**/*.pdf
+!/site/user/pages/02.qualifications/technology-sme/certificate-corrected.png

@@ -1,7 +1,15 @@
 <div class="certificate-gallery">
+  {% if page.template == 'home' %}
+  <div class="certificate-showcase certificate-showcase-government" data-loop="true">
+    <div class="certificate-rail certificate-rail-government" tabindex="0" role="group" aria-label="企业资质证书，可左右滚动" aria-live="off">
+      {% for certificate in government_certificates %}{% include 'partials/certificate-card.html.twig' with {'certificate_static': true} %}{% endfor %}
+    </div>
+  </div>
+  {% else %}
   <div class="certificate-grid" aria-label="企业资质证书">
     {% for certificate in government_certificates %}{% include 'partials/certificate-card.html.twig' with {'certificate_static': page.template == 'home'} %}{% endfor %}
   </div>
+  {% endif %}
   {% if page.template == 'home' %}{% include 'partials/certificate-rail.html.twig' %}{% else %}
   {% if credit_certificates|length %}<details class="credit-certificates">
     <summary><span>信用评价证书 <small>{{ credit_certificates|length }} 项</small></span><span class="credit-toggle" aria-hidden="true">+</span></summary>

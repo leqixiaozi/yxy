@@ -43,7 +43,7 @@
   window.addEventListener('scroll', clearPointer, {passive: true});
   const feed = document.querySelector('#news .news-feed-scroll');
   const items = feed ? [...feed.querySelectorAll('.news-list > li')] : [];
-  const moduleEntries = [...document.querySelectorAll('#products .module-heading, #products .content-grid > .content-card, #news .news-intro, #qualifications > .section-intro, #qualifications .certificate-grid > .certificate-tile, #qualifications .certificate-groups > .certificate-showcase')];
+  const moduleEntries = [...document.querySelectorAll('#products .module-heading, #products .content-grid > .content-card, #news .news-intro, #qualifications > .section-intro, #qualifications .certificate-showcase-government, #qualifications .certificate-groups > .certificate-showcase')];
   let newsObserver;
   const revealAll = () => items.forEach(item => item.classList.add('news-entered'));
   const sync = () => {

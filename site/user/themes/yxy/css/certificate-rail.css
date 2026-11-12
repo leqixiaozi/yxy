@@ -14,3 +14,12 @@
 .design-nexus .certificate-rail-item figure{border-color:#2c446a;background:#f7f9fd}
 @media(max-width:760px){.certificate-showcase-heading h3{font-size:14px}.certificate-rail{gap:12px}.certificate-rail-item{flex-basis:126px}.certificate-rail-item figure{height:124px}}
 @media(prefers-reduced-motion:reduce){.certificate-rail-item figure{transition:none}}
+
+/* Full-size government certificates share the existing pause/drag controls. */
+.certificate-showcase-government{margin-top:0;padding-top:0;border-top:0}
+.certificate-rail-government{gap:26px;padding:0;scroll-behavior:auto}
+.certificate-rail-government>.certificate-tile{flex:0 0 calc((100% - 26px)/2);user-select:none}
+.certificate-rail-government .certificate-picture>img{pointer-events:none;-webkit-user-drag:none}
+.certificate-rail-government:focus-visible{outline:2px solid var(--blue);outline-offset:4px}
+@media(max-width:1050px){.certificate-rail-government{gap:18px}.certificate-rail-government>.certificate-tile{flex-basis:calc((100% - 18px)/2)}}
+@media(max-width:760px){.certificate-rail-government{gap:18px}.certificate-rail-government>.certificate-tile{flex-basis:88%}.certificate-rail-government .certificate-caption h3{font-size:18px}}

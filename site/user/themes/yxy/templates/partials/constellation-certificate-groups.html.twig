@@ -1,7 +1,7 @@
 {% set groups = [{'title':'信用评价','items':credit_certificates},{'title':'知识产权','items':ip_certificates}] %}
 <div class="certificate-groups">
 {% for group in groups %}{% if group.items|length %}
-<section class="certificate-showcase" aria-label="{{ group.title|e }}展示">
+<section class="certificate-showcase" data-loop="true" aria-label="{{ group.title|e }}展示">
   <div class="certificate-showcase-heading"><h3>{{ group.title|e }}</h3></div>
   <div class="certificate-rail" tabindex="0" role="group" aria-label="{{ group.title|e }}，可左右滚动" aria-live="off">
   {% for certificate in group.items %}
